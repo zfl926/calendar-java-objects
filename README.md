@@ -5,7 +5,7 @@ A simple application written in Java that takes in user input and generates an .
 ##Notes
 Please note that usage instructions may only apply to Unix based shells and I haven't tried on Windows cmd. For Windows users, download [git bash](http://www.git-scm.com/downloads) or perhaps update readme to be OS agnostic. 
 
-##Usage
+##Getting Started
 1. Fork/Clone/Download Project
 
 2. cd to project directory
@@ -15,10 +15,23 @@ Please note that usage instructions may only apply to Unix based shells and I ha
 sudo chmod 755 Compile.sh
 ```
 
-4. Running script will clear, compile program, and run it
+4. Running script will clear terminal and compile
 ```
 ./Compile.sh
 ```
+
+##Usage
+1. run program
+```
+java Interface
+```
+if you want to import an existing .ics file, run the program like so:
+```
+java Interface TeamCalendar.ics
+```
+
+2. Type "Commands" if you are lost and confused
+```Commands```
 
 ##Requirements
 - Java
