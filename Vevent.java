@@ -167,32 +167,44 @@ public class Vevent
 
 		if (UID != null && !UID.equals(""))
 		{
+			result += "UID:";
 			result += UID;
+			result += "\n";
 		}
 
 		if (DTSTAMP != null && !DTSTAMP.equals(""))
 		{
+			result += "DTSTAMP:";
 			result += DTSTAMP;
+			result += "\n";
 		}
 
 		if (ORGANIZER != null && !ORGANIZER.equals(""))
 		{
+			result += "ORGANIZER:";
 			result += ORGANIZER;
+			result += "\n";
 		}
 
 		if (DTSTART != null && !DTSTART.equals(""))
 		{
+			result += "DTSTART:";
 			result += DTSTART;
+			result += "\n";
 		}
 
 		if (DTEND != null && !DTEND.equals(""))
 		{
+			result += "DTEND:";
 			result += DTEND;
+			result += "\n";
 		}
 
 		if (SUMMARY != null && !SUMMARY.equals(""))
 		{
+			result += "SUMMARY:";
 			result += SUMMARY;
+			result += "\n";
 		}
 
 		result += "END:VEVENT\n";

@@ -11,31 +11,28 @@ public class Interface
 
 		//if user enters a command argument
 		if (args.length == 1)
-		{
+		{	
 			//if user enters a valid .ics file
-			if (isIcsFile(args[0]))
-			{
-				System.out.println("importing .ics file into calendar object...");
-				//calendar = new Calendar(args[0]);
-			}
-			//if the user enters a non valid .ics file
-			else
+			if (!isIcsFile(args[0]))
 			{
 				System.out.println("The entered file is not a valid .ics file!");
 				return;
 			}
-		}
-		//no command arguments
-		else if (args.length == 0)
-		{
-			System.out.println("No import calendar, creating a new .ics file...");
-			calendar = new Calendar();
+
+			System.out.println("importing .ics file into calendar object...");
+			calendar = new Calendar(args[0]);
 		}
 		//if user enters more than 1 argument
 		else if (args.length > 1)
 		{
 			System.out.println("Too many arguments!");
 			return;
+		}
+		//no command arguments
+		else
+		{
+			System.out.println("No import calendar, creating a new .ics file...");
+			calendar = new Calendar();
 		}
 
 		//get user input
@@ -54,11 +51,16 @@ public class Interface
        		//add event to calendar
        		else if(userInput.equals("add"))
        		{
-       			System.out.println("calendar.add(); here");
+       			System.out.println("Adding event...");
+
+       			//sample add here
+       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "dank memes"));
        		}
        		//exit application
        		else if(userInput.equals("exit") || userInput.equals("quit"))
        		{
+       			System.out.println("Exporting data to " + calendar.getFileName());
+       			calendar.exportIcs();
        			exitProgram = true;
        		}
        		//If their is no known command for user input
