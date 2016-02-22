@@ -6,8 +6,8 @@ public class Calendar
 {	
 	//filename target must be in same working directory as java program
 	private String fileName = "outputcalendar.ics";
-	private String header = "BEGIN:VCALENDAR\nVERSION:2.0\n";
-	private String footer = "END:VCALENDAR\n";
+	private final String HEADER = "BEGIN:VCALENDAR\nVERSION:2.0\n";
+	private final String FOOTER = "END:VCALENDAR\n";
 	ArrayList<Vevent> allVevents = new ArrayList<Vevent>();
 
 	//default constructor
@@ -29,7 +29,8 @@ public class Calendar
 
 	public void importIcs(String inputIcsFile)
 	{
-
+		//TODO
+		//parse the input file and add the appropriate events and what not to arraylists
 	}
 
 	public void exportIcs()
@@ -40,7 +41,7 @@ public class Calendar
 			BufferedWriter out = new BufferedWriter(fstream);
 
 			//HEADER
-			out.write(header);
+			out.write(HEADER);
 
 			//VEVENTS
 		    Iterator veventsItr = allVevents.iterator();
@@ -50,7 +51,7 @@ public class Calendar
 		    }
 		    
 			//FOOTER
-			out.write(footer);
+			out.write(FOOTER);
 			out.close();
 		}
 		catch (Exception e)
