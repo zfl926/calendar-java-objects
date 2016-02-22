@@ -12,15 +12,26 @@ public class Interface
 		while(!exitProgram)
 		{
 			//take user input and convert to lower case
-			System.out.println("Please enter a command!\nFor a list of commands, type \"commands\"");
+			System.out.print("Command: ");
        		userInput = userInputScanner.nextLine();
        		userInput = userInput.toLowerCase();
 
+       		//commands command
        		if(userInput.equals("commands"))
        		{
-       			System.out.println("You have entered the \"Commands\" button!");
+       			printAllCommands();
+       		}
+       		//add command
+       		if(userInput.equals("add"))
+       		{
+       			//add();
+       		}
+       		//exit command
+       		if(userInput.equals("exit") || userInput.equals("quit"))
+       		{
        			exitProgram = true;
        		}
+       		//If their is no known command for user input
        		else
        		{
        			System.out.println("I am not sure what you mean, perhaps type \"Commands\"?");
@@ -34,6 +45,9 @@ public class Interface
 	private void printAllCommands()
 	{
 		System.out.println("-------COMMANDS--------");
+		System.out.println("commands - prints all known commands");
+		System.out.println("exit     - exits the program with exporting");
+		System.out.println("add      - add an event to current .ics file");
 
 	}
 }
