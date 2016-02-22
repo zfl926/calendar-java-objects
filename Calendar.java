@@ -1,16 +1,18 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Calendar
 {	
-	//file must be in same working directory as java program
+	//filename target must be in same working directory as java program
 	private String fileName = "outputcalendar.ics";
 	private String header = "BEGIN:VCALENDAR\nVERSION:2.0\n";
 	private String footer = "END:VCALENDAR\n";
+	ArrayList<Vevent> allVevents = new ArrayList<Vevent>();
 
 	//default constructor
 	public Calendar()
 	{
-		
+
 	}
 
 	//overloaded constructor
@@ -26,7 +28,7 @@ public class Calendar
 
 	public void importIcs(String inputIcsFile)
 	{
-		
+
 	}
 
 	public void exportIcs()
@@ -47,6 +49,6 @@ public class Calendar
 
 	public void addEvent()
 	{
-
+		
 	}
 }
