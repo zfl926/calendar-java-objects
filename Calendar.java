@@ -1,12 +1,14 @@
+import java.io.*;
+
 public class Calendar
 {	
 	//file must be in same working directory as java program
-	String fileName = "outputcalendar.ics";
+	private String fileName = "outputcalendar.ics";
 
 	//default constructor
 	public Calendar()
 	{
-		System.out.println("A calendar has been made, output will be stored with the name: " + fileName);	
+		addHeader();
 	}
 
 	//overloaded constructor
@@ -15,18 +17,33 @@ public class Calendar
 		this.fileName = fileName;
 	}
 
-	public void importIcs()
+	public String getFileName()
+	{
+		return fileName;
+	}
+
+	public void importIcs(String inputIcsFile)
 	{
 
 	}
 
 	public void exportIcs()
 	{
-
+		try
+		{
+			FileWriter fstream = new FileWriter(fileName);
+			BufferedWriter out = new BufferedWriter(fstream);
+			out.write("Header here!\n");
+			out.close();
+		}
+		catch (Exception e)
+		{
+	  		System.err.println("Error when trying to export to .ics file: \n" + e.getMessage());
+		}
 	}
 
 	public void addEvent()
 	{
-		
+
 	}
 }
