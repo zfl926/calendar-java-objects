@@ -15,7 +15,7 @@ Please note that usage instructions may only apply to Unix based shells and I ha
 sudo chmod 755 Compile.sh
 ```
 
-4. Running script will clear terminal and compile
+4. Running script will clear terminal and compile program
 ```
 ./Compile.sh
 ```
@@ -31,7 +31,9 @@ java Interface TeamCalendar.ics
 ```
 
 2. Type "Commands" if you are lost and confused
-```Commands```
+```
+Commands
+```
 
 ##Requirements
 - Java
