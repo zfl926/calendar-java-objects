@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Calendar
 {	
@@ -41,9 +42,13 @@ public class Calendar
 			//HEADER
 			out.write(header);
 
-			//ALL EVENTS
-			
-
+			//VEVENTS
+		    Iterator veventsItr = allVevents.iterator();
+		    while(veventsItr.hasNext())
+		    {
+		    	out.write(veventsItr.next().toString());
+		    }
+		    
 			//FOOTER
 			out.write(footer);
 			out.close();
