@@ -89,6 +89,11 @@ public class Vevent
 	{
 		SUMMARY = input;
 	}
+
+	public boolean isValid()
+	{
+		return true;
+	}
 	
 	/*
 		adds all non null or empty fields to a result string

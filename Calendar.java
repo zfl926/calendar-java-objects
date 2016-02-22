@@ -37,7 +37,14 @@ public class Calendar
 		{
 			FileWriter fstream = new FileWriter(fileName);
 			BufferedWriter out = new BufferedWriter(fstream);
+
+			//HEADER
 			out.write(header);
+
+			//ALL EVENTS
+			
+
+			//FOOTER
 			out.write(footer);
 			out.close();
 		}
@@ -47,8 +54,18 @@ public class Calendar
 		}
 	}
 
-	public void addEvent()
+	public void addEvent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
 	{
-		
-	}
+		Vevent newVevent = new Vevent(inputUID, inputDTSTAMP, inputORGANIZER, inputDTSTART, inputDTEND, inputSUMMARY);
+
+		//ensures that input parameters are gucci. Don't be passin in dirty data!
+		if (newVevent.isValid())
+		{
+			allVevents.add(newVevent);
+		}
+		else
+		{
+			System.err.println("The event that you are trying to add is invalid!");
+		}
+	}	
 }
