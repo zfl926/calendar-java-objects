@@ -21,7 +21,7 @@ sudo chmod 755 Compile.sh
 ```
 
 ##Usage
-1. run program
+###Run program
 ```
 java Interface
 ```
@@ -30,7 +30,8 @@ if you want to import an existing .ics file, run the program like so:
 java Interface TeamCalendar.ics
 ```
 
-2. Type "Commands" if you are lost and confused
+###Lost?
+typing "commands" will give you a list of commands that you can use
 ```
 Commands
 ```
