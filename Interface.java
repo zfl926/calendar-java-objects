@@ -1,4 +1,4 @@
-import java.util.Scanner; 
+import java.util.Scanner;
 
 public class Interface 
 {
@@ -7,11 +7,36 @@ public class Interface
 		String userInput = "";
 		Scanner userInputScanner = new Scanner(System.in);
 		boolean exitProgram = false;
+		Calendar calendar;
 
-		//import
-		//or
-		//create calendar here
-		Calendar calendar = new Calendar();
+		//if user enters a command argument
+		if (args.length == 1)
+		{
+			//if user enters a valid .ics file
+			if (isIcsFile(args[0]))
+			{
+				System.out.println("importing .ics file into calendar object...");
+				//calendar = new Calendar(args[0]);
+			}
+			//if the user enters a non valid .ics file
+			else
+			{
+				System.out.println("The entered file is not a valid .ics file!");
+				return;
+			}
+		}
+		//no command arguments
+		else if (args.length == 0)
+		{
+			System.out.println("No import calendar, creating a new .ics file...");
+			calendar = new Calendar();
+		}
+		//if user enters more than 1 argument
+		else if (args.length > 1)
+		{
+			System.out.println("Too many arguments!");
+			return;
+		}
 
 		//get user input
 		while(!exitProgram)
@@ -21,17 +46,17 @@ public class Interface
        		userInput = userInputScanner.nextLine();
        		userInput = userInput.toLowerCase();
 
-       		//commands command
+       		//list all commands
        		if(userInput.equals("commands"))
        		{
        			printAllCommands();
        		}
-       		//add command
+       		//add event to calendar
        		else if(userInput.equals("add"))
        		{
        			System.out.println("calendar.add(); here");
        		}
-       		//exit command
+       		//exit application
        		else if(userInput.equals("exit") || userInput.equals("quit"))
        		{
        			exitProgram = true;
@@ -54,5 +79,34 @@ public class Interface
 		System.out.println("exit     - exits the program with exporting");
 		System.out.println("add      - add an event to current .ics file");
 
+	}
+
+	/*
+		Returns true if input is .ics file, false if otherwise
+		 modified from http://stackoverflow.com/questions/3571223/how-do-i-get-the-file-extension-of-a-file-in-java
+	*/
+	private static boolean isIcsFile(String fileName)
+	{
+		String extension = "";
+		int i = fileName.lastIndexOf('.');
+		boolean myReturn;
+
+		if (i > 0) 
+		{
+		    extension = fileName.substring(i+1);
+		}
+
+		extension = extension.toLowerCase();
+
+		if (extension.equals("ics"))
+		{
+			myReturn = true;
+		}
+		else
+		{
+			myReturn = false;
+		}
+
+		return myReturn;
 	}
 }

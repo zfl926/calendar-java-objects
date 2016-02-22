@@ -5,11 +5,16 @@ public class Calendar
 	//default constructor
 	public Calendar()
 	{
-		System.out.println("A calendar has been made");
+		System.out.println("A calendar has been made");	
 	}
 
 	//overloaded constructor
 	public Calendar(String filename)
+	{
+
+	}
+
+	public void importIcs()
 	{
 
 	}
