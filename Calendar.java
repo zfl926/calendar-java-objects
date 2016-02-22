@@ -6,8 +6,8 @@ public class Calendar
 {	
 	//filename target must be in same working directory as java program
 	private String fileName = "outputcalendar.ics";
-	private final String HEADER = "BEGIN:VCALENDAR\nVERSION:2.0\n";
-	private final String FOOTER = "END:VCALENDAR\n";
+	private String HEADER = "BEGIN:VCALENDAR\nVERSION:2.0\n";
+	private String FOOTER = "END:VCALENDAR\n";
 	ArrayList<Vevent> allVevents = new ArrayList<Vevent>();
 
 	//default constructor
@@ -63,15 +63,16 @@ public class Calendar
 	public void printAllEvents()
 	{
 	    Iterator veventsItr = allVevents.iterator();
+	    System.out.print("-------------------------------------\n");
 	    while(veventsItr.hasNext())
 	    {
 	    	System.out.print(veventsItr.next().toString());
+	    	System.out.println("-------------------------------------");
 	    }
 	}
 
 	public void addEvent(Vevent inputVevent)
 	{
-		//ensures that input parameters are gucci. Don't be passin in dirty data!
 		if (inputVevent.isValid())
 		{
 			allVevents.add(inputVevent);

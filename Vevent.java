@@ -20,6 +20,13 @@ public class Vevent
 	private String DTEND;
 	private String SUMMARY;
 
+	//default constructor
+	public Vevent()
+	{
+					
+	}
+
+	//overloaded constructor
 	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
 	{
 		UID = inputUID;
@@ -133,7 +140,7 @@ public class Vevent
 	public boolean validSUMMARY(String input)
 	{
 		//TODO
-		//not sure how to validate this, maybe limit to 150 characters?
+		//not sure how to validate this, maybe limit to x characters?
 		return true;
 	}
 

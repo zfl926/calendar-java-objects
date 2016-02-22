@@ -51,10 +51,14 @@ public class Interface
        		//add event to calendar
        		else if(userInput.equals("add"))
        		{
-       			System.out.println("Adding event...");
+       			Vevent vevent = addEventInterface();
 
-       			//SAMPLE HERE
-       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "dank memes"));
+       			calendar.addEvent(vevent);
+       		}
+       		//adds a sample event - currently just for speed of testing/debugging
+       		else if(userInput.equals("addsample"))
+       		{
+       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event"));
        		}
        		//print all events currently in the calendar
        		else if(userInput.equals("printallevents"))
@@ -80,17 +84,83 @@ public class Interface
 		}
 	}
 
+	private static Vevent addEventInterface()
+	{
+		Vevent vevent = new Vevent();
+		Scanner  userInputScanner = new Scanner(System.in);
+		String UID, DTSTAMP, ORGANIZER, DTSTART, DTEND, SUMMARY;
+		UID = DTSTAMP = ORGANIZER = DTSTART = DTEND = SUMMARY = "";
+
+		do
+		{
+			System.out.println("Enter a valid UID:");
+			UID = userInputScanner.nextLine();
+       		UID = UID.toLowerCase();
+		}
+		while(!vevent.validUID(UID));
+		vevent.setUID((userInputScanner.nextLine()).toLowerCase());
+
+		do
+		{
+			System.out.println("Enter a valid DTSTAMP:");
+			DTSTAMP = userInputScanner.nextLine();
+       		DTSTAMP = DTSTAMP.toLowerCase();
+		}
+		while(!vevent.validDTSTAMP(DTSTAMP));
+		vevent.setDTSTAMP((userInputScanner.nextLine()).toLowerCase());
+
+		do
+		{
+			System.out.println("Enter a valid ORGANIZER:");
+			ORGANIZER = userInputScanner.nextLine();
+       		ORGANIZER = ORGANIZER.toLowerCase();
+		}
+		while(!vevent.validORGANIZER(ORGANIZER));
+		vevent.setORGANIZER((userInputScanner.nextLine()).toLowerCase());
+
+		do
+		{
+			System.out.println("Enter a valid DTSTART:");
+			DTSTART = userInputScanner.nextLine();
+       		DTSTART = DTSTART.toLowerCase();
+		}
+		while(!vevent.validDTSTART(DTSTART));
+		vevent.setDTSTART((userInputScanner.nextLine()).toLowerCase());
+
+		do
+		{
+			System.out.println("Enter a valid DTEND:");
+			DTEND = userInputScanner.nextLine();
+       		DTEND = DTEND.toLowerCase();
+		}
+		while(!vevent.validDTEND(DTEND));
+		vevent.setDTEND((userInputScanner.nextLine()).toLowerCase());
+
+		do
+		{
+			System.out.println("Enter a valid SUMMARY:");
+			SUMMARY = userInputScanner.nextLine();
+       		SUMMARY = SUMMARY.toLowerCase();
+		}
+		while(!vevent.validSUMMARY(SUMMARY));
+		vevent.setSUMMARY((userInputScanner.nextLine()).toLowerCase());
+
+		return vevent;
+	}
+
 	/*
 		Returns all possible commands that a user could enter
 	*/
 	private static void printAllCommands()
 	{
-		System.out.println("-------COMMANDS--------");
+		System.out.println();
+		System.out.println("=============COMMANDS==============");
 		System.out.println("commands       - prints all known commands");
 		System.out.println("exit           - exits the program with exporting");
 		System.out.println("add            - add an event to current .ics file");
 		System.out.println("printallevents - prints every event currently in the working calendar");
-
+		System.out.println("===================================");
+		System.out.println();
 	}
 
 	/*
