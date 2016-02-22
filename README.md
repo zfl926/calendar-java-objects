@@ -39,4 +39,7 @@ Commands
 ##Requirements
 - Java
 
+##Deliverables
+[1: Sample event export (hard coded event)](https://youtu.be/0gzPtsj05u4)
+
 
