@@ -1,4 +1,4 @@
 #!/bin/sh
 clear
-javac Interface.java
+javac Interface.java Calendar.java
 java Interface

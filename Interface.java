@@ -8,6 +8,11 @@ public class Interface
 		Scanner userInputScanner = new Scanner(System.in);
 		boolean exitProgram = false;
 
+		//import
+		//or
+		//create calendar here
+		Calendar calendar = new Calendar();
+
 		//get user input
 		while(!exitProgram)
 		{
@@ -22,12 +27,12 @@ public class Interface
        			printAllCommands();
        		}
        		//add command
-       		if(userInput.equals("add"))
+       		else if(userInput.equals("add"))
        		{
-       			//add();
+       			System.out.println("calendar.add(); here");
        		}
        		//exit command
-       		if(userInput.equals("exit") || userInput.equals("quit"))
+       		else if(userInput.equals("exit") || userInput.equals("quit"))
        		{
        			exitProgram = true;
        		}
@@ -42,7 +47,7 @@ public class Interface
 	/*
 		Returns all possible commands that a user could enter
 	*/
-	private void printAllCommands()
+	private static void printAllCommands()
 	{
 		System.out.println("-------COMMANDS--------");
 		System.out.println("commands - prints all known commands");
