@@ -30,7 +30,7 @@ public class Calendar
 	public void importIcs(String inputIcsFile)
 	{
 		//TODO
-		//parse the input file and add the appropriate events and what not to arraylists
+		//parse the input file and add the appropriate events to arraylists
 	}
 
 	public void exportIcs()
@@ -58,6 +58,15 @@ public class Calendar
 		{
 	  		System.err.println("Error when trying to export to .ics file:\n" + e.getMessage());
 		}
+	}
+
+	public void printAllEvents()
+	{
+	    Iterator veventsItr = allVevents.iterator();
+	    while(veventsItr.hasNext())
+	    {
+	    	System.out.print(veventsItr.next().toString());
+	    }
 	}
 
 	public void addEvent(Vevent inputVevent)

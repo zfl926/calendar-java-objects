@@ -4,9 +4,9 @@ public class Interface
 {
 	public static void main(String [] args)
 	{
-		String userInput = "";
-		Scanner userInputScanner = new Scanner(System.in);
-		boolean exitProgram = false;
+		boolean  exitProgram = false;
+		String   userInput = "";
+		Scanner  userInputScanner = new Scanner(System.in);
 		Calendar calendar;
 
 		//if user enters a command argument
@@ -31,14 +31,14 @@ public class Interface
 		//no command arguments
 		else
 		{
-			System.out.println("No import calendar, creating a new .ics file...");
+			System.out.println("No import specified, creating a new .ics file...");
 			calendar = new Calendar();
 		}
 
 		//get user input
 		while(!exitProgram)
 		{
-			//take user input and convert to lower case
+			//take user input and converts to lower case
 			System.out.print("Command: ");
        		userInput = userInputScanner.nextLine();
        		userInput = userInput.toLowerCase();
@@ -53,8 +53,17 @@ public class Interface
        		{
        			System.out.println("Adding event...");
 
-       			//sample add here
+       			//SAMPLE HERE
        			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "dank memes"));
+       		}
+       		//print all events currently in the calendar
+       		else if(userInput.equals("printallevents"))
+       		{
+       			System.out.println();
+       			System.out.println("===================================");
+       			calendar.printAllEvents();
+       			System.out.println("===================================");
+       			System.out.println();
        		}
        		//exit application
        		else if(userInput.equals("exit") || userInput.equals("quit"))
@@ -77,9 +86,10 @@ public class Interface
 	private static void printAllCommands()
 	{
 		System.out.println("-------COMMANDS--------");
-		System.out.println("commands - prints all known commands");
-		System.out.println("exit     - exits the program with exporting");
-		System.out.println("add      - add an event to current .ics file");
+		System.out.println("commands       - prints all known commands");
+		System.out.println("exit           - exits the program with exporting");
+		System.out.println("add            - add an event to current .ics file");
+		System.out.println("printallevents - prints every event currently in the working calendar");
 
 	}
 
