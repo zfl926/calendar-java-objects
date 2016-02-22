@@ -20,6 +20,7 @@ public class Calendar
 	public Calendar(String fileName)
 	{
 		this.fileName = fileName;
+		importIcs(filename);
 	}
 
 	public String getFileName()
@@ -27,7 +28,7 @@ public class Calendar
 		return fileName;
 	}
 
-	public void importIcs(String inputIcsFile)
+	private void importIcs(String inputIcsFile)
 	{
 		//TODO
 		//parse the input file and add the appropriate events to arraylists

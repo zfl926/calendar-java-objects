@@ -84,6 +84,9 @@ public class Interface
 		}
 	}
 
+	//CURRENTLY BUGGED AND NEEDS WORK
+	//TODO
+	//takes user input only if its correct to add an event to the calendar
 	private static Vevent addEventInterface()
 	{
 		Vevent vevent = new Vevent();
