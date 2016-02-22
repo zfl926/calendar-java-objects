@@ -59,14 +59,12 @@ public class Calendar
 		}
 	}
 
-	public void addEvent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
+	public void addEvent(Vevent inputVevent)
 	{
-		Vevent newVevent = new Vevent(inputUID, inputDTSTAMP, inputORGANIZER, inputDTSTART, inputDTEND, inputSUMMARY);
-
 		//ensures that input parameters are gucci. Don't be passin in dirty data!
-		if (newVevent.isValid())
+		if (inputVevent.isValid())
 		{
-			allVevents.add(newVevent);
+			allVevents.add(inputVevent);
 		}
 		else
 		{

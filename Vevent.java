@@ -90,9 +90,71 @@ public class Vevent
 		SUMMARY = input;
 	}
 
+	public boolean validUID(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
+	public boolean validDTSTAMP(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
+	public boolean validORGANIZER(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
+	public boolean validDTSTART(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
+	public boolean validDTEND(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
+	public boolean validSUMMARY(String input)
+	{
+		//TODO
+		//not sure how to validate this, maybe limit to 150 characters?
+		return true;
+	}
+
+	/*
+		ensures that all fields of vevent are valid according to protocol
+		https://en.wikipedia.org/wiki/ICalendar
+	*/
 	public boolean isValid()
 	{
-		return true;
+		boolean myReturn;
+
+		if (validUID(UID) && validDTSTAMP(DTSTAMP) && validORGANIZER(ORGANIZER) && validDTSTART(DTSTART) && validDTEND(DTEND) && validSUMMARY(SUMMARY))
+		{
+			myReturn = true;
+		}
+		else
+		{
+			myReturn = false;
+		}
+
+		return myReturn;
 	}
 	
 	/*
