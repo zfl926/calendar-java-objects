@@ -88,94 +88,93 @@ public class Interface
 	//needs to be more user friendly, but it works
 	private static Vevent addEventInterface()
 	{
-		Vevent vevent = new Vevent();
-		Scanner  userInputScanner = new Scanner(System.in);
-		String UID, DTSTAMP, ORGANIZER, DTSTART, DTEND, SUMMARY;
-		UID = DTSTAMP = ORGANIZER = DTSTART = DTEND = SUMMARY = "";
+		Vevent  vevent = new Vevent();
+		Scanner userInputScanner = new Scanner(System.in);
+		String  temp =  "";
 
         //User sets event UID
 		do
 		{
 			System.out.println("\nEnter a valid UID (or type \"cancel\" to cancel adding an event):\n");
-			UID = userInputScanner.nextLine();
-       		UID = UID.toLowerCase();
-            if (UID.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-        while(!vevent.validUID(UID));
-		vevent.setUID(UID);
+        while(!vevent.validUID(temp));
+		vevent.setUID(temp);
    
         //User sets event DTSTAMP
 		do
 		{
 			System.out.println("\nEnter a valid DTSTAMP (or type \"cancel\" to cancel adding an event):\n");
-			DTSTAMP = userInputScanner.nextLine();
-       		DTSTAMP = DTSTAMP.toLowerCase();
-            if (DTSTAMP.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-		while(!vevent.validDTSTAMP(DTSTAMP));
-		vevent.setDTSTAMP(DTSTAMP);
+		while(!vevent.validDTSTAMP(temp));
+		vevent.setDTSTAMP(temp);
 
         //User sets event ORGANIZER
 		do
 		{
 			System.out.println("\nEnter a valid ORGANIZER (or type \"cancel\" to cancel adding an event):\n");
-			ORGANIZER = userInputScanner.nextLine();
-       		ORGANIZER = ORGANIZER.toLowerCase();
-            if (ORGANIZER.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-		while(!vevent.validORGANIZER(ORGANIZER));
-		vevent.setORGANIZER(ORGANIZER);
+		while(!vevent.validORGANIZER(temp));
+		vevent.setORGANIZER(temp);
 
         //User sets event DTSTART
 		do
 		{
 			System.out.println("\nEnter a valid DTSTART (or type \"cancel\" to cancel adding an event):\n");
-			DTSTART = userInputScanner.nextLine();
-       		DTSTART = DTSTART.toLowerCase();
-            if (DTSTART.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-		while(!vevent.validDTSTART(DTSTART));
-		vevent.setDTSTART(DTSTART);
+		while(!vevent.validDTSTART(temp));
+		vevent.setDTSTART(temp);
 
         //User sets event DTEND
 		do
 		{
 			System.out.println("\nEnter a valid DTEND (or type \"cancel\" to cancel adding an event):\n");
-			DTEND = userInputScanner.nextLine();
-       		DTEND = DTEND.toLowerCase();
-            if (DTEND.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-		while(!vevent.validDTEND(DTEND));
-		vevent.setDTEND(DTEND);
+		while(!vevent.validDTEND(temp));
+		vevent.setDTEND(temp);
 
         //User sets event SUMMARY
 		do
 		{
 			System.out.println("\nEnter a valid SUMMARY (or type \"cancel\" to cancel adding an event):\n");
-			SUMMARY = userInputScanner.nextLine();
-       		SUMMARY = SUMMARY.toLowerCase();
-            if (SUMMARY.equals("cancel"))
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
             {
                 return null;
             }
 		}
-		while(!vevent.validSUMMARY(SUMMARY));
-		vevent.setSUMMARY(SUMMARY);
+		while(!vevent.validSUMMARY(temp));
+		vevent.setSUMMARY(temp);
 
 		return vevent;
 	}
@@ -197,7 +196,7 @@ public class Interface
 
 	/*
 		Returns true if input is .ics file, false if otherwise
-		 modified from http://stackoverflow.com/questions/3571223/how-do-i-get-the-file-extension-of-a-file-in-java
+		modified from http://stackoverflow.com/questions/3571223/how-do-i-get-the-file-extension-of-a-file-in-java
 	*/
 	private static boolean isIcsFile(String fileName)
 	{

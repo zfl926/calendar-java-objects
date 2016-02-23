@@ -28,7 +28,7 @@ public class Vevent
 	}
 
 	//overloaded constructor
-	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, )
+	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
 	{
 		UID       = inputUID;
 		DTSTAMP   = inputDTSTAMP;
@@ -36,7 +36,6 @@ public class Vevent
 		DTSTART   = inputDTSTART;
 		DTEND     = inputDTEND;
 		SUMMARY   = inputSUMMARY;
-        GEO       = inputGEO;
 	}
 
 	public String getUID()
