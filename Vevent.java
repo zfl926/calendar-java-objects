@@ -46,7 +46,14 @@ public class Vevent
 
 	public void setUID(String input)
 	{
-		UID = input;
+		if (validUID(input))
+		{
+			UID = input;
+		}
+		else
+		{
+			System.err.println("");
+		}	
 	}
 
 	public String getDTSTAMP()
