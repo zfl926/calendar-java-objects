@@ -127,6 +127,21 @@ public class Calendar
 						System.err.println("Invalid SUMMARY found at line " + lineCount + "");
 					}
 				}
+                //if GEO detected
+				else if((temp = strLine.substring(0, 4)).equals("GEO:"))
+				{
+					String temp2 = strLine.substring(4, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validGEO(temp2))
+					{
+						vevent.setGEO(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid GEO found at line " + lineCount + "");
+					}
+				}
 			} 
 			in.close();
 		}
