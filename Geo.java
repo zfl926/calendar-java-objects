@@ -12,7 +12,10 @@
     Geo also contains multiple properties (ie lat and long)
     
 */
-public class Geo
+public class Geo extends Coordinate 
 {
-    
+    public Geo(float latitude, float longitude)
+    {
+        super(latitude, longitude);
+    }
 }
