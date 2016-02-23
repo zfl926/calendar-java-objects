@@ -52,8 +52,8 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("");
-		}	
+			System.err.println("Cannot set UID to \"" + UID + "\"\nbecause UID is not valid");
+		}
 	}
 
 	public String getDTSTAMP()
@@ -63,7 +63,14 @@ public class Vevent
 
 	public void setDTSTAMP(String input)
 	{
-		DTSTAMP = input;
+		if (validDTSTAMP(DTSTAMP))
+		{
+			DTSTAMP = input;
+		}
+		else
+		{
+			System.err.println("Cannot set DTSTAMP to \"" + DTSTAMP + "\"\nbecause DTSTAMP is not valid");
+		}
 	}
 
 	public String getORGANIZER()
@@ -73,7 +80,14 @@ public class Vevent
 
 	public void setORGANIZER(String input)
 	{
-		ORGANIZER = input;
+		if (validORGANIZER(ORGANIZER))
+		{
+			ORGANIZER = input;
+		}
+		else
+		{
+			System.err.println("Cannot set ORGANIZER to \"" + ORGANIZER + "\"\nbecause ORGANIZER is not valid");
+		}
 	}
 
 	public String getDTSTART()
@@ -83,7 +97,14 @@ public class Vevent
 
 	public void setDTSTART(String input)
 	{
-		DTSTART = input;
+		if (validDTSTART(DTSTART))
+		{
+			DTSTART = input;
+		}
+		else
+		{
+			System.err.println("Cannot set DTSTART to \"" + DTSTART + "\"\nbecause DTSTART is not valid");
+		}
 	}
 
 	public String getDTEND()
@@ -93,7 +114,14 @@ public class Vevent
 
 	public void setDTEND(String input)
 	{
-		DTEND = input;
+		if (validDTEND(DTEND))
+		{
+			DTEND = input;
+		}
+		else
+		{
+			System.err.println("Cannot set DTEND to \"" + DTEND + "\"\nbecause DTEND is not valid");
+		}
 	}
 
 	public String getSUMMARY()
@@ -103,7 +131,14 @@ public class Vevent
 
 	public void setSUMMARY(String input)
 	{
-		SUMMARY = input;
+		if (validSUMMARY(SUMMARY))
+		{
+			SUMMARY = input;
+		}
+		else
+		{
+			System.err.println("Cannot set SUMMARY to \"" + SUMMARY + "\"\nbecause SUMMARY is not valid");
+		}
 	}
 
 	public boolean validUID(String input)
