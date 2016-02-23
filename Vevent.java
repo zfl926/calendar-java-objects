@@ -63,7 +63,7 @@ public class Vevent
 
 	public void setDTSTAMP(String input)
 	{
-		if (validDTSTAMP(DTSTAMP))
+		if (validDTSTAMP(input))
 		{
 			DTSTAMP = input;
 		}
@@ -80,7 +80,7 @@ public class Vevent
 
 	public void setORGANIZER(String input)
 	{
-		if (validORGANIZER(ORGANIZER))
+		if (validORGANIZER(input))
 		{
 			ORGANIZER = input;
 		}
@@ -97,7 +97,7 @@ public class Vevent
 
 	public void setDTSTART(String input)
 	{
-		if (validDTSTART(DTSTART))
+		if (validDTSTART(input))
 		{
 			DTSTART = input;
 		}
@@ -114,7 +114,7 @@ public class Vevent
 
 	public void setDTEND(String input)
 	{
-		if (validDTEND(DTEND))
+		if (validDTEND(input))
 		{
 			DTEND = input;
 		}
@@ -131,7 +131,7 @@ public class Vevent
 
 	public void setSUMMARY(String input)
 	{
-		if (validSUMMARY(SUMMARY))
+		if (validSUMMARY(input))
 		{
 			SUMMARY = input;
 		}
