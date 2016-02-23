@@ -102,6 +102,10 @@ public class Vevent
 		//TODO
 		//MAKE SURE IT IS VALID
 		//https://en.wikipedia.org/wiki/ICalendar
+        if (input.equals("invalid"))
+        {
+            return false;
+        }
 		return true;
 	}
 

@@ -84,9 +84,8 @@ public class Interface
 		}
 	}
 
-	//CURRENTLY BUGGED AND NEEDS WORK
 	//TODO
-	//takes user input only if its correct to add an event to the calendar
+	//needs to be more user friendly, but it works
 	private static Vevent addEventInterface()
 	{
 		Vevent vevent = new Vevent();
@@ -96,57 +95,81 @@ public class Interface
 
 		do
 		{
-			System.out.println("Enter a valid UID:");
+			System.out.println("\nEnter a valid UID (or type \"cancel\" to cancel adding an event):\n");
 			UID = userInputScanner.nextLine();
        		UID = UID.toLowerCase();
+            if (UID.equals("cancel"))
+            {
+                return null;
+            }
 		}
-		while(!vevent.validUID(UID));
-		vevent.setUID((userInputScanner.nextLine()).toLowerCase());
+        while(!vevent.validUID(UID));
+		vevent.setUID(UID);
 
 		do
 		{
-			System.out.println("Enter a valid DTSTAMP:");
+			System.out.println("\nEnter a valid DTSTAMP (or type \"cancel\" to cancel adding an event):\n");
 			DTSTAMP = userInputScanner.nextLine();
        		DTSTAMP = DTSTAMP.toLowerCase();
+            if (DTSTAMP.equals("cancel"))
+            {
+                return null;
+            }
 		}
 		while(!vevent.validDTSTAMP(DTSTAMP));
-		vevent.setDTSTAMP((userInputScanner.nextLine()).toLowerCase());
+		vevent.setDTSTAMP(DTSTAMP);
 
 		do
 		{
-			System.out.println("Enter a valid ORGANIZER:");
+			System.out.println("\nEnter a valid ORGANIZER (or type \"cancel\" to cancel adding an event):\n");
 			ORGANIZER = userInputScanner.nextLine();
        		ORGANIZER = ORGANIZER.toLowerCase();
+            if (ORGANIZER.equals("cancel"))
+            {
+                return null;
+            }
 		}
 		while(!vevent.validORGANIZER(ORGANIZER));
-		vevent.setORGANIZER((userInputScanner.nextLine()).toLowerCase());
+		vevent.setORGANIZER(ORGANIZER);
 
 		do
 		{
-			System.out.println("Enter a valid DTSTART:");
+			System.out.println("\nEnter a valid DTSTART (or type \"cancel\" to cancel adding an event):\n");
 			DTSTART = userInputScanner.nextLine();
        		DTSTART = DTSTART.toLowerCase();
+            if (DTSTART.equals("cancel"))
+            {
+                return null;
+            }
 		}
 		while(!vevent.validDTSTART(DTSTART));
-		vevent.setDTSTART((userInputScanner.nextLine()).toLowerCase());
+		vevent.setDTSTART(DTSTART);
 
 		do
 		{
-			System.out.println("Enter a valid DTEND:");
+			System.out.println("\nEnter a valid DTEND (or type \"cancel\" to cancel adding an event):\n");
 			DTEND = userInputScanner.nextLine();
        		DTEND = DTEND.toLowerCase();
+            if (DTEND.equals("cancel"))
+            {
+                return null;
+            }
 		}
 		while(!vevent.validDTEND(DTEND));
-		vevent.setDTEND((userInputScanner.nextLine()).toLowerCase());
+		vevent.setDTEND(DTEND);
 
 		do
 		{
-			System.out.println("Enter a valid SUMMARY:");
+			System.out.println("\nEnter a valid SUMMARY (or type \"cancel\" to cancel adding an event):\n");
 			SUMMARY = userInputScanner.nextLine();
        		SUMMARY = SUMMARY.toLowerCase();
+            if (SUMMARY.equals("cancel"))
+            {
+                return null;
+            }
 		}
 		while(!vevent.validSUMMARY(SUMMARY));
-		vevent.setSUMMARY((userInputScanner.nextLine()).toLowerCase());
+		vevent.setSUMMARY(SUMMARY);
 
 		return vevent;
 	}

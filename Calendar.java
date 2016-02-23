@@ -20,7 +20,7 @@ public class Calendar
 	public Calendar(String fileName)
 	{
 		this.fileName = fileName;
-		importIcs(filename);
+		importIcs(fileName);
 	}
 
 	public String getFileName()
@@ -64,23 +64,30 @@ public class Calendar
 	public void printAllEvents()
 	{
 	    Iterator veventsItr = allVevents.iterator();
-	    System.out.print("-------------------------------------\n");
+	    System.out.print("-----------------------------------\n");
 	    while(veventsItr.hasNext())
 	    {
 	    	System.out.print(veventsItr.next().toString());
-	    	System.out.println("-------------------------------------");
+	    	System.out.println("-----------------------------------");
 	    }
 	}
 
 	public void addEvent(Vevent inputVevent)
 	{
-		if (inputVevent.isValid())
-		{
-			allVevents.add(inputVevent);
-		}
-		else
-		{
-			System.err.println("The event that you are trying to add is invalid!");
-		}
+        try
+        {
+            if (inputVevent.isValid())
+            {
+                allVevents.add(inputVevent);
+            }
+            else
+            {
+                System.err.println("The event that you are trying to add is invalid!");
+            }  
+        }
+        catch(NullPointerException e)
+        {
+            System.out.println();
+        }
 	}	
 }
