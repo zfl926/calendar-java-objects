@@ -64,7 +64,7 @@ public class Calendar
 					}
 					else
 					{
-						System.err.println("Invalid UID found at line " + lineCount + "");
+						System.err.println("Invalid UID found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
 				//if DTSTAMP detected
@@ -79,7 +79,7 @@ public class Calendar
 					}
 					else
 					{
-						System.err.println("Invalid DTSTAMP found at line " + lineCount + "");
+						System.err.println("Invalid DTSTAMP found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
 				//if DTSTART detected
@@ -94,7 +94,7 @@ public class Calendar
 					}
 					else
 					{
-						System.err.println("Invalid DTSTART found at line " + lineCount + "");
+						System.err.println("Invalid DTSTART found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
 				//if DTEND detected
@@ -109,7 +109,7 @@ public class Calendar
 					}
 					else
 					{
-						System.err.println("Invalid DTEND found at line " + lineCount + "");
+						System.err.println("Invalid DTEND found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
 				//if SUMMARY detected
@@ -124,7 +124,7 @@ public class Calendar
 					}
 					else
 					{
-						System.err.println("Invalid SUMMARY found at line " + lineCount + "");
+						System.err.println("Invalid SUMMARY found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
                 //if GEO detected
