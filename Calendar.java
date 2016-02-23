@@ -30,12 +30,115 @@ public class Calendar
 
 	private void importIcs(String inputIcsFile)
 	{
-		//TODO
-		//parse the input file and add the appropriate events to arraylists
+		try
+		{
+			DataInputStream in = new DataInputStream(new FileInputStream(inputIcsFile));
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			Vevent vevent = new Vevent();
+			String strLine;
+			int lineCount = 0;
+			String temp;
+			 
+			while ((strLine = br.readLine()) != null)   
+			{
+				lineCount++;
+				//if a new event is detected
+				if (strLine.equals("BEGIN:VEVENT"))
+				{
+					vevent = new Vevent();
+				}
+				//if the end of the event details
+				else if(strLine.equals("END:VEVENT"))
+				{
+					allVevents.add(vevent);
+				}
+				//if UID detected
+				else if((temp = strLine.substring(0, 4)).equals("UID:"))
+				{
+					String temp2 = strLine.substring(4, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validUID(temp2))
+					{
+						vevent.setUID(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid UID found at line " + lineCount + "");
+					}
+				}
+				//if DTSTAMP detected
+				else if((temp = strLine.substring(0, 8)).equals("DTSTAMP:"))
+				{
+					String temp2 = strLine.substring(8, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validDTSTAMP(temp2))
+					{
+						vevent.setDTSTAMP(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid DTSTAMP found at line " + lineCount + "");
+					}
+				}
+				//if DTSTART detected
+				else if((temp = strLine.substring(0, 8)).equals("DTSTART:"))
+				{
+					String temp2 = strLine.substring(8, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validDTSTART(temp2))
+					{
+						vevent.setDTSTART(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid DTSTART found at line " + lineCount + "");
+					}
+				}
+				//if DTEND detected
+				else if((temp = strLine.substring(0, 6)).equals("DTEND:"))
+				{
+					String temp2 = strLine.substring(6, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validDTEND(temp2))
+					{
+						vevent.setDTEND(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid DTEND found at line " + lineCount + "");
+					}
+				}
+				//if SUMMARY detected
+				else if((temp = strLine.substring(0, 8)).equals("SUMMARY:"))
+				{
+					String temp2 = strLine.substring(8, strLine.length());
+					
+					//if valid according to validation method in vevent
+					if(vevent.validSUMMARY(temp2))
+					{
+						vevent.setSUMMARY(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid SUMMARY found at line " + lineCount + "");
+					}
+				}
+			} 
+			in.close();
+		}
+		catch (Exception e)
+		{
+			System.err.println("Error: " + e.getMessage());
+		}
 	}
 
 	public void exportIcs()
 	{
+
 		try
 		{
 			FileWriter fstream = new FileWriter(fileName);
