@@ -19,6 +19,7 @@ public class Vevent
 	private String DTSTART;
 	private String DTEND;
 	private String SUMMARY;
+    private Geo GEO;
 
 	//default constructor
 	public Vevent()
@@ -27,14 +28,15 @@ public class Vevent
 	}
 
 	//overloaded constructor
-	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
+	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, )
 	{
-		UID = inputUID;
-		DTSTAMP = inputDTSTAMP;
+		UID       = inputUID;
+		DTSTAMP   = inputDTSTAMP;
 		ORGANIZER = inputORGANIZER;
-		DTSTART = inputDTSTART;
-		DTEND = inputDTEND;
-		SUMMARY = inputSUMMARY;						
+		DTSTART   = inputDTSTART;
+		DTEND     = inputDTEND;
+		SUMMARY   = inputSUMMARY;
+        GEO       = inputGEO;
 	}
 
 	public String getUID()

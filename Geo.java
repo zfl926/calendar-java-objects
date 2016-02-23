@@ -11,6 +11,8 @@
     
     Geo also contains multiple properties (ie lat and long)
     
+    TLDR: Geo is middleware from Vevent/Vtodo to Coordinate.java
+    
 */
 public class Geo extends Coordinate 
 {
