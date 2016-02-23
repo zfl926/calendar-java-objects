@@ -93,6 +93,7 @@ public class Interface
 		String UID, DTSTAMP, ORGANIZER, DTSTART, DTEND, SUMMARY;
 		UID = DTSTAMP = ORGANIZER = DTSTART = DTEND = SUMMARY = "";
 
+        //User sets event UID
 		do
 		{
 			System.out.println("\nEnter a valid UID (or type \"cancel\" to cancel adding an event):\n");
@@ -105,7 +106,8 @@ public class Interface
 		}
         while(!vevent.validUID(UID));
 		vevent.setUID(UID);
-
+   
+        //User sets event DTSTAMP
 		do
 		{
 			System.out.println("\nEnter a valid DTSTAMP (or type \"cancel\" to cancel adding an event):\n");
@@ -119,6 +121,7 @@ public class Interface
 		while(!vevent.validDTSTAMP(DTSTAMP));
 		vevent.setDTSTAMP(DTSTAMP);
 
+        //User sets event ORGANIZER
 		do
 		{
 			System.out.println("\nEnter a valid ORGANIZER (or type \"cancel\" to cancel adding an event):\n");
@@ -132,6 +135,7 @@ public class Interface
 		while(!vevent.validORGANIZER(ORGANIZER));
 		vevent.setORGANIZER(ORGANIZER);
 
+        //User sets event DTSTART
 		do
 		{
 			System.out.println("\nEnter a valid DTSTART (or type \"cancel\" to cancel adding an event):\n");
@@ -145,6 +149,7 @@ public class Interface
 		while(!vevent.validDTSTART(DTSTART));
 		vevent.setDTSTART(DTSTART);
 
+        //User sets event DTEND
 		do
 		{
 			System.out.println("\nEnter a valid DTEND (or type \"cancel\" to cancel adding an event):\n");
@@ -158,6 +163,7 @@ public class Interface
 		while(!vevent.validDTEND(DTEND));
 		vevent.setDTEND(DTEND);
 
+        //User sets event SUMMARY
 		do
 		{
 			System.out.println("\nEnter a valid SUMMARY (or type \"cancel\" to cancel adding an event):\n");
