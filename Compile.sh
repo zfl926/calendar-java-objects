@@ -1,3 +1,6 @@
 #!/bin/sh
+files="Interface.java Calendar.java Vevent.java Geo.java Coordinate.java"
+linesOfCode=`wc -l $files | grep total`
 clear
-javac Interface.java Calendar.java Vevent.java Geo.java Coordinate.java
+javac $files
+printf "Compiled " && printf $linesOfCode && printf " lines of code\n"
