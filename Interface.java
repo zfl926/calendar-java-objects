@@ -91,6 +91,7 @@ public class Interface
 		Vevent  vevent = new Vevent();
 		Scanner userInputScanner = new Scanner(System.in);
 		String  temp =  "";
+		boolean addGeo = true;
 
         //User sets event UID
 		do
@@ -98,6 +99,8 @@ public class Interface
 			System.out.println("\nEnter a valid UID (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -112,6 +115,8 @@ public class Interface
 			System.out.println("\nEnter a valid DTSTAMP (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -126,6 +131,8 @@ public class Interface
 			System.out.println("\nEnter a valid ORGANIZER (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -140,6 +147,8 @@ public class Interface
 			System.out.println("\nEnter a valid DTSTART (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -154,6 +163,8 @@ public class Interface
 			System.out.println("\nEnter a valid DTEND (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -168,6 +179,8 @@ public class Interface
 			System.out.println("\nEnter a valid SUMMARY (or type \"cancel\" to cancel adding an event):\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
@@ -179,18 +192,33 @@ public class Interface
 		//User sets event GEO
 		do
 		{
-			System.out.println("\nEnter a valid GEO (or type \"cancel\" to cancel adding an event)");
-			System.out.println("A valid GEO are two decimal values seperated by a semi-colon");
+			System.out.println("\nEnter a valid GEO");
+			System.out.println("or type \"cancel\" to cancel adding an event");
+			System.out.println("or type \"pass\" to skip adding a GEO parameter to this event");
+			System.out.println("A valid GEO consists of two decimal values seperated by a semi-colon");
 			System.out.println("Example: 37.386013;-122.08293\n\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
+			
+			//if the user no longer wants to add an event
             if (temp.equals("cancel"))
             {
                 return null;
             }
+			
+			//if the user doesn't want to add a geo to the event
+			if (temp.equals("pass"))
+            {
+                addGeo = false;
+				break;
+            }
 		}
 		while(!vevent.validGEO(temp));
-		vevent.setGEO(temp);
+		
+		if(addGeo)
+		{
+			vevent.setGEO(temp);
+		}
 
 		return vevent;
 	}

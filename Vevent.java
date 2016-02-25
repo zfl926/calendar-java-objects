@@ -257,17 +257,25 @@ public class Vevent
 	*/
 	public boolean isValid()
 	{
-		boolean myReturn;
+		boolean myReturn = false;
 
-		if (validUID(UID) && validDTSTAMP(DTSTAMP) && validORGANIZER(ORGANIZER) && validDTSTART(DTSTART) && validDTEND(DTEND) && validSUMMARY(SUMMARY) && validGEO(GEO.toString()))
+		//if all of the mandatory fields of a Vevent are valid
+		if (validUID(UID) && validDTSTAMP(DTSTAMP) && validORGANIZER(ORGANIZER) && validDTSTART(DTSTART) && validDTEND(DTEND) && validSUMMARY(SUMMARY))
 		{
-			myReturn = true;
+			//if geo has been instantiated
+			if (GEO != null)
+			{
+				//if geo is valid
+				if (validGEO(GEO.toString()))
+				{
+					myReturn = true;
+				}
+			}
+			else
+			{
+				myReturn = true;
+			}
 		}
-		else
-		{
-			myReturn = false;
-		}
-
 		return myReturn;
 	}
 

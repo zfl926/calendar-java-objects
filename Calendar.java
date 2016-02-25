@@ -205,7 +205,7 @@ public class Calendar
         }
         catch(NullPointerException e)
         {
-            System.out.println();
+            System.out.println("Null Pointer Exception\n" + e.getMessage());
         }
 	}	
 }
