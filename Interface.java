@@ -179,7 +179,9 @@ public class Interface
 		//User sets event GEO
 		do
 		{
-			System.out.println("\nEnter a valid GEO (or type \"cancel\" to cancel adding an event):\n");
+			System.out.println("\nEnter a valid GEO (or type \"cancel\" to cancel adding an event)");
+			System.out.println("A valid GEO are two decimal values seperated by a semi-colon");
+			System.out.println("Example: 37.386013;-122.08293\n\n");
 			temp = userInputScanner.nextLine();
        		temp = temp.toLowerCase();
             if (temp.equals("cancel"))

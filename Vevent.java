@@ -148,13 +148,20 @@ public class Vevent
 
 	public void setGEO(String input)
 	{
-		if (validGEO(input))
+		try
 		{
-			GEO = new Geo(input);
-		}
-		else
+			if (validGEO(input))
+			{
+				GEO = new Geo(input);
+			}
+			else
+			{
+				System.err.println("Cannot set GEO to \"" + GEO + "\"\nbecause GEO is not valid");
+			}
+		}	
+		catch (IllegalArgumentException e)
 		{
-			System.err.println("Cannot set GEO to \"" + GEO + "\"\nbecause GEO is not valid");
+			System.out.println("Those parameters don't work, try again");
 		}
 	}
 
@@ -214,7 +221,34 @@ public class Vevent
 		//TODO
 		//MAKE SURE IT IS VALID
 		//https://en.wikipedia.org/wiki/ICalendar
-		return true;
+
+		boolean myReturn = false;
+
+		try
+		{
+			if (input.contains("GEO:"))
+			{
+				//get rid of GEO:
+				input = stripTitle(input);
+			}
+			
+			//get coordinates
+			String [] coords = input.split(";");
+
+			if (!isValidLatitude(Float.valueOf(coords[0])) || !isValidLongitude(Float.valueOf(coords[1])))
+			{
+				myReturn = false;
+			}
+			else
+			{
+				myReturn = true;
+			}
+		}
+		catch(Exception e)
+		{
+
+		}
+		return myReturn;
 	}
 
 	/*
@@ -235,6 +269,36 @@ public class Vevent
 		}
 
 		return myReturn;
+	}
+
+	private String stripTitle(String input)
+	{
+		String [] temp = input.split(":");
+		return temp[1];
+	}
+
+	public boolean isValidLatitude(float latitude) 
+	{
+	    if(latitude >= -90.0000f && latitude <= 90.0000f) 
+	    {
+	    	return true;
+	    } 
+	    else 
+	    {
+	    	return false;
+	    }
+	}
+
+	public boolean isValidLongitude(float longitude) 
+	{
+		if(longitude >= -180.0000f && longitude <= 180.0000f) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
 	}
 	
 	/*
