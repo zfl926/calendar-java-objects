@@ -7,6 +7,9 @@ public class UnitTests
     @Test
     public void evaluateImportExport() 
     {
+        System.out.println("\n\n");
+        System.out.println("--------------------------------------------");
+        System.out.println("Imported .ics file into new Calendar object");
         MD5Checksum myCheckSum = new MD5Checksum();
         String sampleInput = "testinput.ics";
         String sampleOutput = sampleInput;
@@ -25,7 +28,9 @@ public class UnitTests
         }
         
         Calendar calendar = new Calendar(sampleInput);
+        System.out.println("Imported .ics file into new Calendar object");
         calendar.exportIcs();
+        System.out.println("Exporting .ics file");
         
         try
         {
@@ -49,5 +54,7 @@ public class UnitTests
         }
         
         assertEquals(sum1, sum2);
+        System.out.println("--------------------------------------------");
+        System.out.println("\n\n");
     }
 }
