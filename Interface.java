@@ -79,7 +79,7 @@ public class Interface
        		//If their is no known command for user input
        		else
        		{
-       			System.out.println("I am not sure what you mean, perhaps type \"Commands\"?");
+       			System.out.println("I am not sure what you mean, perhaps type \"commands\"?");
        		}
 		}
 	}

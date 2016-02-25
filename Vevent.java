@@ -317,49 +317,49 @@ public class Vevent
 		String result = "";
 		result += "BEGIN:VEVENT\n";
 
-		if (UID != null && !UID.equals(""))
+		if (UID != null)
 		{
 			result += "UID:";
 			result += UID;
 			result += "\n";
 		}
 
-		if (DTSTAMP != null && !DTSTAMP.equals(""))
+		if (DTSTAMP != null)
 		{
 			result += "DTSTAMP:";
 			result += DTSTAMP;
 			result += "\n";
 		}
 
-		if (ORGANIZER != null && !ORGANIZER.equals(""))
+		if (ORGANIZER != null)
 		{
 			result += "ORGANIZER:";
 			result += ORGANIZER;
 			result += "\n";
 		}
 
-		if (DTSTART != null && !DTSTART.equals(""))
+		if (DTSTART != null)
 		{
 			result += "DTSTART:";
 			result += DTSTART;
 			result += "\n";
 		}
 
-		if (DTEND != null && !DTEND.equals(""))
+		if (DTEND != null)
 		{
 			result += "DTEND:";
 			result += DTEND;
 			result += "\n";
 		}
 
-		if (SUMMARY != null && !SUMMARY.equals(""))
+		if (SUMMARY != null)
 		{
 			result += "SUMMARY:";
 			result += SUMMARY;
 			result += "\n";
 		}
 
-		if (GEO.toString() != null && !GEO.toString().equals(""))
+		if (GEO != null)
 		{
 			result += "GEO:";
 			result += GEO.toString();
