@@ -14,10 +14,54 @@
     TLDR: Geo is middleware from Vevent/Vtodo to Coordinate.java
     
 */
-public class Geo extends Coordinate 
+public class Geo
 {
-    public Geo(float latitude, float longitude)
+    Coordinate coordinate;
+    float lat;
+    float lon;
+       
+    public Geo(String input)
     {
-        super(latitude, longitude);
+        String [] temp = input.split(";");
+
+        lat = Float.parseFloat(temp[0]);
+        lon = Float.parseFloat(temp[1]);
+
+        coordinate = new Coordinate(lat, lon);
+    }
+
+    public String getGEO()
+    {
+        String temp  =  "";
+        temp        += lat;
+        temp        += ";";
+        temp        += lon;
+
+        return temp;
+    }
+
+    public float getLatitude()
+    {
+        return lat;
+    }
+
+    public float getLongitude()
+    {
+        return lon;
+    }
+
+    public void setLatitude(float input)
+    {
+        lat = input;
+    }
+
+    public void setLongitude(float input)
+    {
+        lon = input;
+    }
+
+    public String toString()
+    {
+        return this.getGEO();
     }
 }

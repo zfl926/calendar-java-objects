@@ -58,7 +58,7 @@ public class Interface
        		//adds a sample event - currently just for speed of testing/debugging
        		else if(userInput.equals("addsample"))
        		{
-       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event"));
+       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event", new Geo("37.386013;-122.082932")));
        		}
        		//print all events currently in the calendar
        		else if(userInput.equals("printallevents"))
@@ -175,6 +175,20 @@ public class Interface
 		}
 		while(!vevent.validSUMMARY(temp));
 		vevent.setSUMMARY(temp);
+
+		//User sets event GEO
+		do
+		{
+			System.out.println("\nEnter a valid GEO (or type \"cancel\" to cancel adding an event):\n");
+			temp = userInputScanner.nextLine();
+       		temp = temp.toLowerCase();
+            if (temp.equals("cancel"))
+            {
+                return null;
+            }
+		}
+		while(!vevent.validGEO(temp));
+		vevent.setGEO(temp);
 
 		return vevent;
 	}

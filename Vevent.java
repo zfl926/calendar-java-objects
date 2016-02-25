@@ -28,7 +28,7 @@ public class Vevent
 	}
 
 	//overloaded constructor
-	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
+	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, Geo inputGEO)
 	{
 		UID       = inputUID;
 		DTSTAMP   = inputDTSTAMP;
@@ -36,6 +36,7 @@ public class Vevent
 		DTSTART   = inputDTSTART;
 		DTEND     = inputDTEND;
 		SUMMARY   = inputSUMMARY;
+		GEO       = inputGEO;
 	}
 
 	public String getUID()
@@ -140,6 +141,23 @@ public class Vevent
 		}
 	}
 
+	public String getGEO()
+	{
+		return GEO.toString();
+	}
+
+	public void setGEO(String input)
+	{
+		if (validGEO(input))
+		{
+			GEO = new Geo(input);
+		}
+		else
+		{
+			System.err.println("Cannot set GEO to \"" + GEO + "\"\nbecause GEO is not valid");
+		}
+	}
+
 	public boolean validUID(String input)
 	{
 		//TODO
@@ -191,6 +209,14 @@ public class Vevent
 		return true;
 	}
 
+	public boolean validGEO(String input)
+	{
+		//TODO
+		//MAKE SURE IT IS VALID
+		//https://en.wikipedia.org/wiki/ICalendar
+		return true;
+	}
+
 	/*
 		ensures that all fields of vevent are valid according to protocol
 		https://en.wikipedia.org/wiki/ICalendar
@@ -199,7 +225,7 @@ public class Vevent
 	{
 		boolean myReturn;
 
-		if (validUID(UID) && validDTSTAMP(DTSTAMP) && validORGANIZER(ORGANIZER) && validDTSTART(DTSTART) && validDTEND(DTEND) && validSUMMARY(SUMMARY))
+		if (validUID(UID) && validDTSTAMP(DTSTAMP) && validORGANIZER(ORGANIZER) && validDTSTART(DTSTART) && validDTEND(DTEND) && validSUMMARY(SUMMARY) && validGEO(GEO.toString()))
 		{
 			myReturn = true;
 		}
@@ -258,6 +284,13 @@ public class Vevent
 		{
 			result += "SUMMARY:";
 			result += SUMMARY;
+			result += "\n";
+		}
+
+		if (GEO.toString() != null && !GEO.toString().equals(""))
+		{
+			result += "GEO:";
+			result += GEO.toString();
 			result += "\n";
 		}
 
