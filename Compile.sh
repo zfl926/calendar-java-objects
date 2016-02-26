@@ -1,5 +1,5 @@
 #!/bin/sh
-files="Interface.java Calendar.java Vevent.java Geo.java Coordinate.java"
+files="Interface.java Calendar.java Vevent.java"
 linesOfCode=`wc -l $files | grep total`
 clear
 javac $files

@@ -19,7 +19,6 @@ public class Vevent
 	private String DTSTART;
 	private String DTEND;
 	private String SUMMARY;
-    private Geo GEO;
 
 	//default constructor
 	public Vevent()
