@@ -23,11 +23,13 @@ public class Calendar
 		importIcs(fileName);
 	}
 
+        //returns the filename
 	public String getFileName()
 	{
 		return fileName;
 	}
 
+       //imports a .ics file
 	private void importIcs(String inputIcsFile)
 	{
 		try
