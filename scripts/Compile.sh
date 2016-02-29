@@ -1,6 +1,7 @@
 #!/bin/sh
 java_files="../src/*.java"
 linesOfCode=`wc -l $java_files | grep total`
+output_location="../bin/classes"
 clear
-javac -d ../bin/ $java_files
+javac -d $output_location $java_files -verbose
 printf "\n\nCompiled " && printf $linesOfCode && printf " lines of code\n\n"

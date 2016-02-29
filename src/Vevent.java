@@ -23,7 +23,7 @@ public class Vevent
 	//default constructor
 	public Vevent()
 	{
-					
+
 	}
 
 	//overloaded constructor
@@ -209,7 +209,7 @@ public class Vevent
 
 		return myReturn;
 	}
-	
+
 	/*
 		adds all non null or empty fields to a result string
 	*/

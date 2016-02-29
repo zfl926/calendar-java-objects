@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.DateFormat;
 
-public class Interface 
+public class Interface
 {
 	public static void main(String [] args)
 	{
@@ -12,7 +12,7 @@ public class Interface
 
 		//if user enters a command argument
 		if (args.length == 1)
-		{	
+		{
 			//if user enters a valid .ics file
 			if (!isIcsFile(args[0]))
 			{
@@ -106,7 +106,7 @@ public class Interface
 		}
         while(!vevent.validUID(temp));
 		vevent.setUID(temp);
-   
+
         //User sets event DTSTAMP
 		do
 		{
@@ -205,7 +205,7 @@ public class Interface
 		int i = fileName.lastIndexOf('.');
 		boolean myReturn;
 
-		if (i > 0) 
+		if (i > 0)
 		{
 		    extension = fileName.substring(i+1);
 		}
