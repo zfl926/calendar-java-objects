@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Calendar
-{	
+{
 	//filename target must be in same working directory as java program
 	private String fileName = "outputcalendar.ics";
 	private String HEADER = "BEGIN:VCALENDAR\nVERSION:2.0\n";
@@ -38,8 +38,8 @@ public class Calendar
 			String strLine;
 			int lineCount = 0;
 			String temp;
-			 
-			while ((strLine = br.readLine()) != null)   
+
+			while ((strLine = br.readLine()) != null)
 			{
 				lineCount++;
 				//if a new event is detected
@@ -56,7 +56,7 @@ public class Calendar
 				else if((temp = strLine.substring(0, 4)).equals("UID:"))
 				{
 					String temp2 = strLine.substring(4, strLine.length());
-					
+
 					//if valid according to validation method in vevent
 					if(vevent.validUID(temp2))
 					{
@@ -71,7 +71,7 @@ public class Calendar
 				else if((temp = strLine.substring(0, 8)).equals("DTSTAMP:"))
 				{
 					String temp2 = strLine.substring(8, strLine.length());
-					
+
 					//if valid according to validation method in vevent
 					if(vevent.validDTSTAMP(temp2))
 					{
@@ -86,7 +86,7 @@ public class Calendar
 				else if((temp = strLine.substring(0, 8)).equals("DTSTART:"))
 				{
 					String temp2 = strLine.substring(8, strLine.length());
-					
+
 					//if valid according to validation method in vevent
 					if(vevent.validDTSTART(temp2))
 					{
@@ -101,7 +101,7 @@ public class Calendar
 				else if((temp = strLine.substring(0, 6)).equals("DTEND:"))
 				{
 					String temp2 = strLine.substring(6, strLine.length());
-					
+
 					//if valid according to validation method in vevent
 					if(vevent.validDTEND(temp2))
 					{
@@ -116,7 +116,7 @@ public class Calendar
 				else if((temp = strLine.substring(0, 8)).equals("SUMMARY:"))
 				{
 					String temp2 = strLine.substring(8, strLine.length());
-					
+
 					//if valid according to validation method in vevent
 					if(vevent.validSUMMARY(temp2))
 					{
@@ -127,7 +127,7 @@ public class Calendar
 						System.err.println("Invalid SUMMARY found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
-			} 
+			}
 			in.close();
 		}
 		catch (Exception e)
@@ -153,7 +153,7 @@ public class Calendar
 		    {
 		    	out.write(veventsItr.next().toString());
 		    }
-		    
+
 			//FOOTER
 			out.write(FOOTER);
 			out.close();
@@ -186,11 +186,11 @@ public class Calendar
             else
             {
                 System.err.println("The event that you are trying to add is invalid!");
-            }  
+            }
         }
         catch(NullPointerException e)
         {
             System.out.println();
         }
-	}	
+	}
 }
