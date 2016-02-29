@@ -23,11 +23,13 @@ public class Calendar
 		importIcs(fileName);
 	}
 
+        //returns the filename
 	public String getFileName()
 	{
 		return fileName;
 	}
 
+       //imports a .ics file
 	private void importIcs(String inputIcsFile)
 	{
 		try
@@ -192,5 +194,9 @@ public class Calendar
         {
             System.out.println();
         }
+<<<<<<< HEAD
 	}
+=======
+	}	
+>>>>>>> 02f1b062281c11c08cd00165a6e804486b967c7f
 }
