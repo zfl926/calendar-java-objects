@@ -23,13 +23,13 @@ public class Calendar
 		importIcs(fileName);
 	}
 
-        //returns the filename
+	//returns the filename
 	public String getFileName()
 	{
 		return fileName;
 	}
 
-       //imports a .ics file
+	//imports a .ics file
 	private void importIcs(String inputIcsFile)
 	{
 		try
@@ -150,11 +150,11 @@ public class Calendar
 			out.write(HEADER);
 
 			//VEVENTS
-		    Iterator veventsItr = allVevents.iterator();
-		    while(veventsItr.hasNext())
-		    {
-		    	out.write(veventsItr.next().toString());
-		    }
+			Iterator veventsItr = allVevents.iterator();
+			while(veventsItr.hasNext())
+			{
+				out.write(veventsItr.next().toString());
+			}
 
 			//FOOTER
 			out.write(FOOTER);
@@ -162,41 +162,37 @@ public class Calendar
 		}
 		catch (Exception e)
 		{
-	  		System.err.println("Error when trying to export to .ics file:\n" + e.getMessage());
+			System.err.println("Error when trying to export to .ics file:\n" + e.getMessage());
 		}
 	}
 
 	public void printAllEvents()
 	{
-	    Iterator veventsItr = allVevents.iterator();
-	    System.out.print("-----------------------------------\n");
-	    while(veventsItr.hasNext())
-	    {
-	    	System.out.print(veventsItr.next().toString());
-	    	System.out.println("-----------------------------------");
-	    }
+		Iterator veventsItr = allVevents.iterator();
+		System.out.print("-----------------------------------\n");
+		while(veventsItr.hasNext())
+		{
+			System.out.print(veventsItr.next().toString());
+			System.out.println("-----------------------------------");
+		}
 	}
 
 	public void addEvent(Vevent inputVevent)
 	{
-        try
-        {
-            if (inputVevent.isValid())
-            {
-                allVevents.add(inputVevent);
-            }
-            else
-            {
-                System.err.println("The event that you are trying to add is invalid!");
-            }
-        }
-        catch(NullPointerException e)
-        {
-            System.out.println();
-        }
-<<<<<<< HEAD
+		try
+		{
+			if (inputVevent.isValid())
+			{
+				allVevents.add(inputVevent);
+			}
+			else
+			{
+				System.err.println("The event that you are trying to add is invalid!");
+			}
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println();
+		}
 	}
-=======
-	}	
->>>>>>> 02f1b062281c11c08cd00165a6e804486b967c7f
 }
