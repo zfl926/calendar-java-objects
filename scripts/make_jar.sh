@@ -1,4 +1,2 @@
 #!/bin/sh
-java_classes="../bin/classes/"
-echo $java_classes
-jar cfM ../docs/MANIFEST.MF ../bin/jar/calendar_program.jar ../bin/classes/Interface.class
+jar -cmf ../docs/MANIFEST.MF ../bin/jar/calendar_program.jar -C ../bin/classes Calendar.class -C ../bin/classes Interface.class -C ../bin/classes Vevent.class
