@@ -222,7 +222,7 @@ public class Calendar
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println();
+			System.out.println(e);
 		}
 	}
 }

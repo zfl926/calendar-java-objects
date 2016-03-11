@@ -20,6 +20,7 @@ public class Vevent
 	private String DTEND;
 	private String SUMMARY;
 	private Geo    GEO;
+	private String CLASS;
 
 	//default constructor
 	public Vevent()
@@ -28,7 +29,7 @@ public class Vevent
 	}
 
 	//overloaded constructor
-	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, Geo inputGEO)
+	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, Geo inputGEO, String inputCLASS)
 	{
 		UID       = inputUID;
 		DTSTAMP   = inputDTSTAMP;
@@ -37,6 +38,7 @@ public class Vevent
 		DTEND     = inputDTEND;
 		SUMMARY   = inputSUMMARY;
 		GEO       = inputGEO;
+		CLASS     = inputCLASS;
 	}
 
 	public String getUID()
@@ -158,6 +160,23 @@ public class Vevent
 		}
 	}
 
+	public String getCLASS()
+	{
+		return CLASS;
+	}
+
+	public void setCLASS(String input)
+	{
+		if (validCLASS(input))
+		{
+			CLASS = input;
+		}
+		else
+		{
+			System.err.println("Cannot set CLASS to \"" + input + "\"\nbecause CLASS is not valid");
+		}
+	}
+
 	public boolean validUID(String input)
 	{
 		//TODO
@@ -209,6 +228,11 @@ public class Vevent
 		return true;
 	}
 
+	public boolean validGEO(Geo input)
+	{
+		return validGEO(input.toString());
+	}
+
 	public boolean validGEO(String input)
 	{
 		Geo temp = new Geo();
@@ -241,9 +265,34 @@ public class Vevent
 		return myReturn;
 	}
 
+	//http://tools.ietf.org/html/rfc5545#section-3.8.1.3
+	public boolean validCLASS(String input)
+	{
+		boolean myReturn = false;
+
+		//if the input contains class
+		if (input.contains("CLASS:"))
+		{
+			input = stripTitle(input);
+		}
+
+		//if the input is equal to any of the three accepted values, see RFC for more information
+		if (input.equals("PUBLIC") || input.equals("PRIVATE") || input.equals("CONFIDENTIAL"))
+		{
+			myReturn = true;
+		}
+		else
+		{
+			myReturn = false;
+		}
+
+		return myReturn;
+	}
+
 	/*
 		ensures that all fields of vevent are valid according to protocol
 		https://en.wikipedia.org/wiki/ICalendar
+		http://tools.ietf.org/html/rfc5545
 	*/
 	public boolean isValid()
 	{
@@ -256,6 +305,34 @@ public class Vevent
 		else
 		{
 			myReturn = false;
+		}
+
+		//first checks to see if CLASS is set, then checks to see if it is valid
+		//without checking for null value, a null pointer exception is returned
+		if (CLASS != null)
+		{
+			if(validCLASS(CLASS))
+			{
+				myReturn = true;
+			}
+			else
+			{
+				myReturn = false;
+			}
+		}
+
+		//first checks to see if GEO is set, then checks to see if it is valid
+		//without checking for null value, a null pointer exception is returned
+		if (GEO != null)
+		{
+			if (validGEO(GEO))
+			{
+				myReturn = true;
+			}
+			else
+			{
+				myReturn = false;
+			}
 		}
 
 		return myReturn;
@@ -315,6 +392,13 @@ public class Vevent
 		{
 			result += "GEO:";
 			result += GEO.toString();
+			result += "\n";
+		}
+
+		if (CLASS != null && !CLASS.equals(""))
+		{
+			result += "CLASS:";
+			result += CLASS;
 			result += "\n";
 		}
 
