@@ -19,6 +19,7 @@ public class Vevent
 	private String DTSTART;
 	private String DTEND;
 	private String SUMMARY;
+	private Geo    GEO;
 
 	//default constructor
 	public Vevent()
@@ -27,7 +28,7 @@ public class Vevent
 	}
 
 	//overloaded constructor
-	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY)
+	public Vevent(String inputUID, String inputDTSTAMP, String inputORGANIZER, String inputDTSTART, String inputDTEND, String inputSUMMARY, Geo inputGEO)
 	{
 		UID       = inputUID;
 		DTSTAMP   = inputDTSTAMP;
@@ -35,6 +36,7 @@ public class Vevent
 		DTSTART   = inputDTSTART;
 		DTEND     = inputDTEND;
 		SUMMARY   = inputSUMMARY;
+		GEO       = inputGEO;
 	}
 
 	public String getUID()
@@ -50,7 +52,7 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set UID to \"" + UID + "\"\nbecause UID is not valid");
+			System.err.println("Cannot set UID to \"" + input + "\"\nbecause UID is not valid");
 		}
 	}
 
@@ -67,7 +69,7 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set DTSTAMP to \"" + DTSTAMP + "\"\nbecause DTSTAMP is not valid");
+			System.err.println("Cannot set DTSTAMP to \"" + input + "\"\nbecause DTSTAMP is not valid");
 		}
 	}
 
@@ -84,7 +86,7 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set ORGANIZER to \"" + ORGANIZER + "\"\nbecause ORGANIZER is not valid");
+			System.err.println("Cannot set ORGANIZER to \"" + input + "\"\nbecause ORGANIZER is not valid");
 		}
 	}
 
@@ -101,7 +103,7 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set DTSTART to \"" + DTSTART + "\"\nbecause DTSTART is not valid");
+			System.err.println("Cannot set DTSTART to \"" + input + "\"\nbecause DTSTART is not valid");
 		}
 	}
 
@@ -118,7 +120,7 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set DTEND to \"" + DTEND + "\"\nbecause DTEND is not valid");
+			System.err.println("Cannot set DTEND to \"" + input + "\"\nbecause DTEND is not valid");
 		}
 	}
 
@@ -135,7 +137,24 @@ public class Vevent
 		}
 		else
 		{
-			System.err.println("Cannot set SUMMARY to \"" + SUMMARY + "\"\nbecause SUMMARY is not valid");
+			System.err.println("Cannot set SUMMARY to \"" + input + "\"\nbecause SUMMARY is not valid");
+		}
+	}
+
+	public Geo getGEO()
+	{
+		return GEO;
+	}
+
+	public void setGEO(String input)
+	{
+		if (validGEO(input))
+		{
+			GEO = new Geo(input);
+		}
+		else
+		{
+			System.err.println("Cannot set GEO to \"" + input.toString() + "\"\nbecause SUMMARY is not valid");
 		}
 	}
 
@@ -188,6 +207,38 @@ public class Vevent
 		//TODO
 		//not sure how to validate this, maybe limit to x characters?
 		return true;
+	}
+
+	public boolean validGEO(String input)
+	{
+		Geo temp = new Geo();
+		boolean myReturn = false;
+
+		try
+		{
+			if (input.contains("GEO:"))
+			{
+				//get rid of GEO:
+				input = stripTitle(input);
+			}
+
+			//get coordinates
+			String [] coords = input.split(";");
+
+			if (!temp.isValidLatitude(Float.valueOf(coords[0])) || !temp.isValidLongitude(Float.valueOf(coords[1])))
+			{
+				myReturn = false;
+			}
+			else
+			{
+				myReturn = true;
+			}
+		}
+		catch(Exception e)
+		{
+
+		}
+		return myReturn;
 	}
 
 	/*
@@ -260,8 +311,21 @@ public class Vevent
 			result += "\n";
 		}
 
+		if (GEO != null && !GEO.toString().equals(""))
+		{
+			result += "GEO:";
+			result += GEO.toString();
+			result += "\n";
+		}
+
 		result += "END:VEVENT\n";
 
 		return result;
+	}
+
+	private String stripTitle(String input)
+	{
+		String [] temp = input.split(":");
+		return temp[1];
 	}
 }

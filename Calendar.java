@@ -129,6 +129,36 @@ public class Calendar
 						System.err.println("Invalid SUMMARY found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
+				//if ORGANIZER detected
+				else if((temp = strLine.substring(0, 10)).equals("ORGANIZER:"))
+				{
+					String temp2 = strLine.substring(10, strLine.length());
+
+					//if valid according to validation method in vevent
+					if(vevent.validORGANIZER(temp2))
+					{
+						vevent.setORGANIZER(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid ORGANIZER found at line " + lineCount + " in " + inputIcsFile);
+					}
+				}
+				//if GEO detected
+				else if((temp = strLine.substring(0, 4)).equals("GEO:"))
+				{
+					String temp2 = strLine.substring(4, strLine.length());
+
+					//if valid according to validation method in vevent
+					if(vevent.validGEO(temp2))
+					{
+						vevent.setGEO(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid GEO found at line " + lineCount + " in " + inputIcsFile);
+					}
+				}
 			}
 			in.close();
 		}

@@ -59,7 +59,7 @@ public class Interface
        		//adds a sample event - currently just for speed of testing/debugging
        		else if(userInput.equals("addsample"))
        		{
-       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event"));
+       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event", new Geo("37.386013;-122.082932")));
        		}
        		//print all events currently in the calendar
        		else if(userInput.equals("printallevents"))
@@ -92,6 +92,7 @@ public class Interface
 		Vevent  vevent = new Vevent();
 		Scanner userInputScanner = new Scanner(System.in);
 		String  temp =  "";
+		boolean addGeo = true;
 
         //User sets event UID
 		do
@@ -176,6 +177,37 @@ public class Interface
 		}
 		while(!vevent.validSUMMARY(temp));
 		vevent.setSUMMARY(temp);
+
+		//User sets event GEO
+		do
+		{
+			System.out.println("\nEnter a valid GEO");
+			System.out.println("or type \"cancel\" to cancel adding an event");
+			System.out.println("or type \"pass\" to skip adding a GEO parameter to this event");
+			System.out.println("A valid GEO consists of two decimal values seperated by a semi-colon");
+			System.out.println("Example: 37.386013;-122.08293\n\n");
+			temp = userInputScanner.nextLine();
+			temp = temp.toLowerCase();
+
+			//if the user no longer wants to add an event
+			if (temp.equals("cancel"))
+			{
+				return null;
+			}
+
+			//if the user doesn't want to add a geo to the event
+			if (temp.equals("pass"))
+			{
+				addGeo = false;
+				break;
+			}
+		}
+		while(!vevent.validGEO(temp));
+
+		if(addGeo)
+		{
+			vevent.setGEO(temp);
+		}
 
 		return vevent;
 	}
