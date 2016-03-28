@@ -212,7 +212,6 @@ public class Vevent
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
 
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
 
@@ -232,7 +231,6 @@ public class Vevent
 		//MAKE SURE IT IS VALID
 		//https://en.wikipedia.org/wiki/ICalendar
 		if (input.length() != 16) {
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
 
@@ -251,7 +249,6 @@ public class Vevent
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
 
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
 
@@ -263,7 +260,6 @@ public class Vevent
 		//MAKE SURE IT IS VALID
 		//https://en.wikipedia.org/wiki/ICalendar
 		if (input.length() != 16) {
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
 
@@ -282,7 +278,6 @@ public class Vevent
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
 
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
 
