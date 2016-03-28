@@ -194,10 +194,9 @@ public class Vevent
 		//MAKE SURE IT IS VALID
 		//https://en.wikipedia.org/wiki/ICalendar
 		if (input.length() != 16) {
-			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
-										
+
 		int expectYear = Integer.parseInt(input.substring(0, 4));
 		int expectMonth = Integer.parseInt(input.substring(4, 6));
 		int expectDay = Integer.parseInt(input.substring(6, 8));
@@ -206,13 +205,13 @@ public class Vevent
 		int expectMinutes = Integer.parseInt(input.substring(11, 13));
 		int expectSeconds = Integer.parseInt(input.substring(13,15));
 		char expectZ = input.charAt(15);
-																									
+
 		if (expectYear < 0 || expectMonth < 1 || expectMonth > 12 ||
 			expectDay < 1 || expectDay > 31 || expectT != 't' ||
 			expectHours < 0 || expectHours > 24 || expectMinutes < 0 ||
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
-																																
+
 			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
@@ -236,7 +235,7 @@ public class Vevent
 			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
-										
+
 		int expectYear = Integer.parseInt(input.substring(0, 4));
 		int expectMonth = Integer.parseInt(input.substring(4, 6));
 		int expectDay = Integer.parseInt(input.substring(6, 8));
@@ -245,13 +244,13 @@ public class Vevent
 		int expectMinutes = Integer.parseInt(input.substring(11, 13));
 		int expectSeconds = Integer.parseInt(input.substring(13,15));
 		char expectZ = input.charAt(15);
-																									
+
 		if (expectYear < 0 || expectMonth < 1 || expectMonth > 12 ||
 			expectDay < 1 || expectDay > 31 || expectT != 't' ||
 			expectHours < 0 || expectHours > 24 || expectMinutes < 0 ||
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
-																																
+
 			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
@@ -267,7 +266,7 @@ public class Vevent
 			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
-										
+
 		int expectYear = Integer.parseInt(input.substring(0, 4));
 		int expectMonth = Integer.parseInt(input.substring(4, 6));
 		int expectDay = Integer.parseInt(input.substring(6, 8));
@@ -276,13 +275,13 @@ public class Vevent
 		int expectMinutes = Integer.parseInt(input.substring(11, 13));
 		int expectSeconds = Integer.parseInt(input.substring(13,15));
 		char expectZ = input.charAt(15);
-																									
+
 		if (expectYear < 0 || expectMonth < 1 || expectMonth > 12 ||
 			expectDay < 1 || expectDay > 31 || expectT != 't' ||
 			expectHours < 0 || expectHours > 24 || expectMinutes < 0 ||
 			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
 			expectZ != 'z') {
-																																
+
 			System.out.println("FORMAT: YYYYMMDDTHHMMSSZ");
 			return false;
 		}
