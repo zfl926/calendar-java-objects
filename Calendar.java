@@ -222,7 +222,23 @@ public class Calendar
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println();
+			System.out.println(e);
 		}
+	}
+
+	//TODO
+	//sorts the events in the calendar by the start date
+	public void sortCalendar()
+	{
+		//sort that ish here :D
+	}
+
+	//TODO
+	//prints the results of the great circle distance
+	//DO NOT SORT HERE, SORTING SHOULD BE DONE BY THE SORT METHOD
+	//instead, just calculate the gcd by whatever the order the events are in, sorting should no be in this method
+	public void printGreatCircleDistance()
+	{
+		//calculate dakine here
 	}
 }
