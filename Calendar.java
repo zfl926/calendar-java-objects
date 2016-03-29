@@ -233,12 +233,8 @@ public class Calendar
 		//sort that ish here :D
 	}
 
-	//TODO
-	//prints the results of the great circle distance
-	//DO NOT SORT HERE, SORTING SHOULD BE DONE BY THE SORT METHOD
-	//instead, just calculate the gcd by whatever the order the events are in, sorting should no be in this method
 	public void printGreatCircleDistance()
 	{
-		//calculate dakine here
+
 	}
 }
