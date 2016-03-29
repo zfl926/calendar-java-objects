@@ -8,12 +8,11 @@ if [ -e "$input_file" ] && [ -s "$input_file" ]
 then
   #compile and run tests
   javac -cp .:junit-4.12.jar UnitTests.java
-  java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore UnitTests
+  returnVal = $(java -cp .:junit-3.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore UnitTests)
+  echo "Here is the return value: "
+  echo $returnVal
 else
-  #qualifications to run tests aren't met and response is printed
-  printf "\n"
   echo "Please make sure that a $input_file exists with valid data before running tests!"
-  printf "\n"
   return 1
 fi
 
