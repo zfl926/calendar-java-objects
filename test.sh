@@ -15,3 +15,5 @@ printf "\n"
 echo "Please make sure that a $input_file exists with valid data before running tests!"
 printf "\n"
 fi
+
+return -1
