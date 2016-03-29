@@ -16,4 +16,4 @@ echo "Please make sure that a $input_file exists with valid data before running 
 printf "\n"
 fi
 
-return -1
+return 1 
