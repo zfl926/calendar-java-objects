@@ -67,7 +67,8 @@ public class UnitTests
         }
 
         //use junit to compare
-        assertEquals(sum1, sum2);
+        //assertEquals(sum1, sum2);
+        assertEquals(1,2);
         System.out.println("--------------------------------------------");
         System.out.println("\n\n");
     }
