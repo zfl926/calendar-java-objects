@@ -7,13 +7,9 @@ A Java application that allows a user to manipulate an .ics (calendar) file
 
 - cd to [scripts directory](https://github.com/TylerNakamura/Calendar-Event-File-Generator/tree/master/scripts)
 
-- compile the program
+- compile and run the program using the script:
 ```
-javac *.javac
-```
-- run the interface driver
-```
-java interface
+./run.sh
 ```
 - if you want to import an existing calendar, pass the file name as the first argument:
 ```
