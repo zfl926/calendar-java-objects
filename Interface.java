@@ -68,6 +68,15 @@ public class Interface
        			System.out.println("===================================");
        			System.out.println();
        		}
+			//print the great circle distance between all events currently in the calendar
+			else if(userInput.equals("printgcd"))
+			{
+       			System.out.println();
+       			System.out.println("===================================");
+       			calendar.printGreatCircleDistance();
+       			System.out.println("===================================");
+       			System.out.println();
+			}
        		//exit application
        		else if(userInput.equals("exit") || userInput.equals("quit"))
        		{
@@ -252,6 +261,7 @@ public class Interface
 		System.out.println("exit           - exits the program with exporting");
 		System.out.println("add            - add an event to current .ics file");
 		System.out.println("printallevents - prints every event currently in the working calendar");
+		System.out.println("printgcd	   - prints the great circle distance between the events");
 		System.out.println("===================================");
 		System.out.println();
 	}
