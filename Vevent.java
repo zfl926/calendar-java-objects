@@ -223,10 +223,12 @@ public class Vevent
 		int expectMonth = Integer.parseInt(input.substring(4, 6));
 		int expectDay = Integer.parseInt(input.substring(6, 8));
 		char expectT = input.charAt(8);
+		expectT = Character.toLowerCase(expectT);
 		int expectHours = Integer.parseInt(input.substring(9, 11));
 		int expectMinutes = Integer.parseInt(input.substring(11, 13));
 		int expectSeconds = Integer.parseInt(input.substring(13,15));
 		char expectZ = input.charAt(15);
+		expectZ = Character.toLowerCase(expectZ);
 
 		if (expectYear < 0 || expectMonth < 1 || expectMonth > 12 ||
 			expectDay < 1 || expectDay > 31 || expectT != 't' ||
