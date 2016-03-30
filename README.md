@@ -5,8 +5,6 @@ A Java application that allows a user to manipulate an .ics (calendar) file
 ##Program Usage
 - [clone project](http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository)
 
-- cd to [scripts directory](https://github.com/TylerNakamura/Calendar-Event-File-Generator/tree/master/scripts)
-
 - compile and run the program using the script:
 ```
 ./run.sh
