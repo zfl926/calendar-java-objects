@@ -239,6 +239,33 @@ public class Calendar
 	//instead, just calculate the gcd by whatever the order the events are in, sorting should no be in this method
 	public void printGreatCircleDistance()
 	{
-		//calculate dakine here
+		Iterator<Vevent> veventsItr = allVevents.iterator();
+		Vevent iter = veventsItr.next();
+		System.out.print("-----------------------------------\n");
+		while(veventsItr.hasNext())
+		{
+			Geo currGEO = iter.getGEO();
+			iter = veventsItr.next();
+			double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
+			System.out.println("Great-circle distance: " + gcd + " miles or " + (1.609344 * gcd) + " kilometers");
+			System.out.println("-----------------------------------");
+		}
 	}
+
+	//calculates the great circle distance between two Geo locations in statute miles
+	public double greatCircleDistanceBetween(Geo src, Geo dest)
+	{
+		double earthRadius = 3958.75; // miles (or 6371.0 kilometers)
+		double dLat = Math.toRadians(dest.getLatitude() - src.getLatitude());
+	    double dLng = Math.toRadians(dest.getLongitude() - src.getLongitude());
+		double sin_dLat = Math.sin(dLat / 2);
+		double sin_dLng = Math.sin(dLng / 2);
+		double a = Math.pow(sin_dLat, 2) + Math.pow(sin_dLng, 2)
+            * Math.cos(Math.toRadians(src.getLatitude())) * Math.cos(Math.toRadians(dest.getLatitude()));
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double dist = earthRadius * c;
+
+		return dist;
+	}
+
 }
