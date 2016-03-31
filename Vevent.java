@@ -331,10 +331,7 @@ public class Vevent implements Comparable<Vevent>
 
 	public boolean validUID(String input)
 	{
-		//TODO
-		//MAKE SURE IT IS VALID
-		//https://en.wikipedia.org/wiki/ICalendar
-        if (input.equals("invalid"))
+        if (input.equals("invalid") || input.length() > 70)
         {
             return false;
         }
@@ -348,10 +345,14 @@ public class Vevent implements Comparable<Vevent>
 
 	public boolean validORGANIZER(String input)
 	{
-		//TODO
-		//MAKE SURE IT IS VALID
-		//https://en.wikipedia.org/wiki/ICalendar
-		return true;
+		if (input.length() > 60)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	public boolean validDTSTART(String input)
@@ -427,9 +428,14 @@ public class Vevent implements Comparable<Vevent>
 
 	public boolean validSUMMARY(String input)
 	{
-		//TODO
-		//not sure how to validate this, maybe limit to x characters?
-		return true;
+		if (input.length() > 400)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	public boolean validGEO(Geo input)
