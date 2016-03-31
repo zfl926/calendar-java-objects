@@ -53,12 +53,9 @@ public class Vevent
 		int maxsumsize = 40;
 		int minorgsize = 5;
 		int maxorgsize = 20;
-	    int MINYEAR    = 1990;
-		int MAXYEAR    = 2020;
 
 		String [] classOptions = {"PUBLIC", "PRIVATE"};
 		DecimalFormat df = new DecimalFormat("#.##");
-		DecimalFormat dm = new DecimalFormat("##");
 
 		int sizeOfUid       = minuidsize   + (int)(Math.random() * maxuidsize);
 		int sizeOfSummary   = minsumsize   + (int)(Math.random() * maxsumsize);
@@ -76,6 +73,9 @@ public class Vevent
 		ORGANIZER = myRS3.nextString();
 		CLASS     = classOptions[classChoice];
 		GEO       = new Geo(df.format(latChoice) + ";" + df.format(lonChoice));
+		DTSTAMP   = getRandomDate();
+		DTSTART   = getRandomDate();
+		DTEND     = getRandomDate();
 
 		//DEBUG OUTPUT
 		System.out.println("UID:       " + UID);
@@ -83,28 +83,65 @@ public class Vevent
 		System.out.println("ORGANIZER: " + ORGANIZER);
 		System.out.println("CLASS:     " + CLASS);
 		System.out.println("GEO:       " + GEO.toString());
+		System.out.println("DTSTAMP:   " + DTSTAMP);
+		System.out.println("DTSTART:   " + DTSTART);
+		System.out.println("DTEND      " + DTEND);
+	}
+
+	private String getRandomDate()
+	{
+		DecimalFormat dm = new DecimalFormat("##");
+
+		String result = "";
+
+		int minYear = 1990;
+		int maxYear = 2030;
+		int maxMonth = 12;
+		int maxDay = 30;
+		int maxHour = 60;
+
+		int min = 1;
+
+		int yearChoice = minYear + (int)(Math.random() * (maxYear - minYear));
+		int monthChoice= min + (int)(Math.random() * (maxMonth - min));
+		int dayChoice  = min + (int)(Math.random() * (maxDay - min));
+		int hourChoice = min + (int)(Math.random() * (maxHour - min));
+		int minChoice  = min + (int)(Math.random() * (maxHour - min));
+		int secChoice  = min + (int)(Math.random() * (maxHour - min));
+
+		result += yearChoice + ""
+			+ String.format("%02d", monthChoice) + ""
+			+ String.format("%02d", dayChoice)   + ""
+			+ "T"
+			+ String.format("%02d", hourChoice) + ""
+			+ String.format("%02d", minChoice)  + ""
+			+ String.format("%02d", secChoice)  + ""
+			+ "Z";
+
+		return result;
+
 	}
 
 	private boolean dateIsGreaterThanDate(String a, String b)
 	{
-		if(!isValidDateFormat(a) || !isValidDateFormat(b))
+		if(!validDateFormat(a) || !validDateFormat(b))
 		{
 			return false;
 		}
 
-		int AYear    = Integer.parseInt(input.substring(0, 4));
-		int AMonth   = Integer.parseInt(input.substring(4, 6));
-		int ADay     = Integer.parseInt(input.substring(6, 8));
-		int AHours   = Integer.parseInt(input.substring(9, 11));
-		int AMinutes = Integer.parseInt(input.substring(11, 13));
-		int ASeconds = Integer.parseInt(input.substring(13,15));
+		int AYear    = Integer.parseInt(a.substring(0, 4));
+		int AMonth   = Integer.parseInt(a.substring(4, 6));
+		int ADay     = Integer.parseInt(a.substring(6, 8));
+		int AHours   = Integer.parseInt(a.substring(9, 11));
+		int AMinutes = Integer.parseInt(a.substring(11, 13));
+		int ASeconds = Integer.parseInt(a.substring(13,15));
 
-		int BYear    = Integer.parseInt(input.substring(0, 4));
-		int BMonth   = Integer.parseInt(input.substring(4, 6));
-		int BDay     = Integer.parseInt(input.substring(6, 8));
-		int BHours   = Integer.parseInt(input.substring(9, 11));
-		int BMinutes = Integer.parseInt(input.substring(11, 13));
-		int BSeconds = Integer.parseInt(input.substring(13,15));
+		int BYear    = Integer.parseInt(b.substring(0, 4));
+		int BMonth   = Integer.parseInt(b.substring(4, 6));
+		int BDay     = Integer.parseInt(b.substring(6, 8));
+		int BHours   = Integer.parseInt(b.substring(9, 11));
+		int BMinutes = Integer.parseInt(b.substring(11, 13));
+		int BSeconds = Integer.parseInt(b.substring(13,15));
 
 		if (AYear > BYear)
 			return true;
@@ -140,7 +177,7 @@ public class Vevent
 			return true;
 
 		if(BSeconds > ASeconds)
-			return false
+			return false;
 
 		System.err.println(a + " is the same as " + b);
 		return false;
