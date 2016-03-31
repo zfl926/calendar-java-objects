@@ -17,7 +17,7 @@ public class UnitTests
         System.out.println("\n\n");
         System.out.println("--------------------------------------------");
         MD5Checksum myCheckSum = new MD5Checksum();
-        String sampleInput = "testinput.ics";
+        String sampleInput = "testInput.ics";
         String sampleOutput = sampleInput;
         String sum1, sum2;
         sum1 = sum2 = "";
