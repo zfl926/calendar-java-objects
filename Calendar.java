@@ -199,7 +199,6 @@ public class Calendar
 
 	public void printAllEvents()
 	{
-		sortCalendar();
 		Iterator veventsItr = allVevents.iterator();
 		System.out.print("-----------------------------------\n");
 		while(veventsItr.hasNext())

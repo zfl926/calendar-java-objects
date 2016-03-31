@@ -69,6 +69,7 @@ public class Interface
        		{
        			System.out.println();
        			System.out.println("===================================");
+				calendar.sortCalendar();
        			calendar.printAllEvents();
        			System.out.println("===================================");
        			System.out.println();
@@ -78,6 +79,7 @@ public class Interface
 			{
        			System.out.println();
        			System.out.println("===================================");
+				calendar.sortCalendar();
        			calendar.printGreatCircleDistance();
        			System.out.println("===================================");
        			System.out.println();
