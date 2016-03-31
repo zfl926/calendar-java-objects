@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
+import java.text.DecimalFormat;
 
 public class Calendar
 {
@@ -234,22 +235,29 @@ public class Calendar
 		Collections.sort(allVevents);
 	}
 
-	//TODO
 	//prints the results of the great circle distance
-	//DO NOT SORT HERE, SORTING SHOULD BE DONE BY THE SORT METHOD
-	//instead, just calculate the gcd by whatever the order the events are in, sorting should no be in this method
 	public void printGreatCircleDistance()
 	{
+		//ensures that there are at least 2 events in the calendar before calculating the GCD
+		if (allVevents.size() < 2)
+		{
+			System.err.println("At least 2 events are needed to calculate GCD");
+			return;
+		}
+
 		Iterator<Vevent> veventsItr = allVevents.iterator();
 		Vevent iter = veventsItr.next();
 		System.out.print("-----------------------------------\n");
+		System.out.print("------GREAT-CIRCLE-DISTANCE--------\n\n");
 		while(veventsItr.hasNext())
 		{
 			Geo currGEO = iter.getGEO();
+			String currSum = iter.getSUMMARY();
+			DecimalFormat df = new DecimalFormat("#,###.##");
 			iter = veventsItr.next();
 			double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
-			System.out.println("Great-circle distance: " + gcd + " miles or " + (1.609344 * gcd) + " kilometers");
-			System.out.println("-----------------------------------");
+			System.out.println(currSum + " and " + iter.getSUMMARY() + ":\n" + df.format(gcd) + "m (" + df.format(1.609344 * gcd) + "km)\n");
+			System.out.println("-----------------------------------\n");
 		}
 	}
 
