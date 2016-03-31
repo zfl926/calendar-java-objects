@@ -264,11 +264,12 @@ public class Interface
 	{
 		System.out.println();
 		System.out.println("=============COMMANDS==============");
-		System.out.println("commands       - prints all known commands");
-		System.out.println("exit           - exits the program with exporting");
-		System.out.println("add            - add an event to current .ics file");
-		System.out.println("printallevents - prints every event currently in the working calendar");
-		System.out.println("printgcd	   - prints the great circle distance between the events");
+		System.out.println("commands       - print all commands");
+		System.out.println("exit           - export then quit");
+		System.out.println("add            - add a custom event");
+		System.out.println("printallevents - print every event");
+		System.out.println("printgcd       - print great circle distance");
+		System.out.println("addsample      - add a random event");
 		System.out.println("===================================");
 		System.out.println();
 	}
