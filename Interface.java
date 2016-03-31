@@ -57,7 +57,12 @@ public class Interface
        		//adds a sample event - currently just for speed of testing/debugging
        		else if(userInput.equals("addsample"))
        		{
-       			calendar.addEvent(new Vevent("htms3l9k1rnnadhbfg1oqc46d8@google.com", "20160222T030130Z", "", "20150322T173000Z", "20150322T180000Z", "default event", new Geo("37.386013;-122.082932"), "PRIVATE"));
+				//creates an event then fills it with random valid values
+				Vevent sampleEvent = new Vevent();
+				sampleEvent.setRandomValues();
+
+				//add sample event to the calendar
+				calendar.addEvent(sampleEvent);
        		}
        		//print all events currently in the calendar
        		else if(userInput.equals("printallevents"))

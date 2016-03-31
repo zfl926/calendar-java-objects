@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Vevent
 {
 	/*
@@ -39,6 +41,38 @@ public class Vevent
 		SUMMARY   = inputSUMMARY;
 		GEO       = inputGEO;
 		CLASS     = inputCLASS;
+	}
+
+	//sets vevents members variables to random but valid values
+	public void setRandomValues()
+	{
+		int minuidsize = 7;
+		int maxuidsize = 20;
+		int minsumsize = 10;
+		int maxsumsize = 40;
+		String [] classOptions = {"PUBLIC", "PRIVATE"};
+
+		int sizeOfUid     = minuidsize + (int)(Math.random() * maxuidsize);
+		int sizeOfSummary = minsumsize + (int)(Math.random() * maxsumsize);
+		int classChoice   = 0          + (int)(Math.random() * 2         );
+		double latChoice  = -90.0        + (Math.random() * 90.0);
+		double lonChoice  = -180.0       + (Math.random() * 180.0);
+
+		RandomString myRS1 = new RandomString(sizeOfUid);
+		RandomString myRS2 = new RandomString(sizeOfSummary);
+
+
+		UID     = myRS1.nextString();
+		SUMMARY = myRS2.nextString();
+		CLASS   = classOptions[classChoice];
+		GEO = new Geo(latChoice + ";" + lonChoice);
+
+		System.out.println("lat: " + latChoice);
+		System.out.println("lon: " + lonChoice);
+		System.out.println("UID:     " + UID);
+		System.out.println("SUMMARY: " + SUMMARY);
+		System.out.println("CLASS:   " + CLASS);
+		System.out.println("GEO:     " + GEO.toString());
 	}
 
 	public String getUID()
