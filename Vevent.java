@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.text.DecimalFormat;
 
 public class Vevent
 {
@@ -43,36 +44,106 @@ public class Vevent
 		CLASS     = inputCLASS;
 	}
 
-	//sets vevents members variables to random but valid values
+	//sets all vevents members variables to random but valid values
 	public void setRandomValues()
 	{
 		int minuidsize = 7;
 		int maxuidsize = 20;
 		int minsumsize = 10;
 		int maxsumsize = 40;
-		String [] classOptions = {"PUBLIC", "PRIVATE"};
+		int minorgsize = 5;
+		int maxorgsize = 20;
+	    int MINYEAR    = 1990;
+		int MAXYEAR    = 2020;
 
-		int sizeOfUid     = minuidsize + (int)(Math.random() * maxuidsize);
-		int sizeOfSummary = minsumsize + (int)(Math.random() * maxsumsize);
-		int classChoice   = 0          + (int)(Math.random() * 2         );
-		double latChoice  = -90.0        + (Math.random() * 90.0);
-		double lonChoice  = -180.0       + (Math.random() * 180.0);
+		String [] classOptions = {"PUBLIC", "PRIVATE"};
+		DecimalFormat df = new DecimalFormat("#.##");
+		DecimalFormat dm = new DecimalFormat("##");
+
+		int sizeOfUid       = minuidsize   + (int)(Math.random() * maxuidsize);
+		int sizeOfSummary   = minsumsize   + (int)(Math.random() * maxsumsize);
+		int sizeOfOrganizer = minorgsize   + (int)(Math.random() * maxorgsize);
+		int classChoice     = 0            + (int)(Math.random() * 2         );
+		double latChoice    = -90.0        + (Math.random()      * 90.0      );
+		double lonChoice    = -180.0       + (Math.random()      * 180.0     );
 
 		RandomString myRS1 = new RandomString(sizeOfUid);
 		RandomString myRS2 = new RandomString(sizeOfSummary);
+		RandomString myRS3 = new RandomString(sizeOfOrganizer);
 
+		UID       = myRS1.nextString();
+		SUMMARY   = myRS2.nextString();
+		ORGANIZER = myRS3.nextString();
+		CLASS     = classOptions[classChoice];
+		GEO       = new Geo(df.format(latChoice) + ";" + df.format(lonChoice));
 
-		UID     = myRS1.nextString();
-		SUMMARY = myRS2.nextString();
-		CLASS   = classOptions[classChoice];
-		GEO = new Geo(latChoice + ";" + lonChoice);
+		//DEBUG OUTPUT
+		System.out.println("UID:       " + UID);
+		System.out.println("SUMMARY:   " + SUMMARY);
+		System.out.println("ORGANIZER: " + ORGANIZER);
+		System.out.println("CLASS:     " + CLASS);
+		System.out.println("GEO:       " + GEO.toString());
+	}
 
-		System.out.println("lat: " + latChoice);
-		System.out.println("lon: " + lonChoice);
-		System.out.println("UID:     " + UID);
-		System.out.println("SUMMARY: " + SUMMARY);
-		System.out.println("CLASS:   " + CLASS);
-		System.out.println("GEO:     " + GEO.toString());
+	private boolean dateIsGreaterThanDate(String a, String b)
+	{
+		if(!isValidDateFormat(a) || !isValidDateFormat(b))
+		{
+			return false;
+		}
+
+		int AYear    = Integer.parseInt(input.substring(0, 4));
+		int AMonth   = Integer.parseInt(input.substring(4, 6));
+		int ADay     = Integer.parseInt(input.substring(6, 8));
+		int AHours   = Integer.parseInt(input.substring(9, 11));
+		int AMinutes = Integer.parseInt(input.substring(11, 13));
+		int ASeconds = Integer.parseInt(input.substring(13,15));
+
+		int BYear    = Integer.parseInt(input.substring(0, 4));
+		int BMonth   = Integer.parseInt(input.substring(4, 6));
+		int BDay     = Integer.parseInt(input.substring(6, 8));
+		int BHours   = Integer.parseInt(input.substring(9, 11));
+		int BMinutes = Integer.parseInt(input.substring(11, 13));
+		int BSeconds = Integer.parseInt(input.substring(13,15));
+
+		if (AYear > BYear)
+			return true;
+
+		if(BYear > AYear)
+			return false;
+
+		if(AMonth > BMonth)
+			return true;
+
+		if(BMonth > AMonth)
+			return false;
+
+		if(ADay > BDay)
+			return true;
+
+		if(BDay > ADay)
+			return false;
+
+		if(AHours > BHours)
+			return true;
+
+		if(BHours > AHours)
+			return false;
+
+		if(AMinutes > AMinutes)
+			return true;
+
+		if(BMinutes > AMinutes)
+			return false;
+
+		if(ASeconds > BSeconds)
+			return true;
+
+		if(BSeconds > ASeconds)
+			return false
+
+		System.err.println(a + " is the same as " + b);
+		return false;
 	}
 
 	public String getUID()
