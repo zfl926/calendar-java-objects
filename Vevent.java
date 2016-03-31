@@ -1,4 +1,4 @@
-public class Vevent
+public class Vevent implements Comparable<Vevent>
 {
 	/*
 		----TEMPLATE----
@@ -474,5 +474,52 @@ public class Vevent
 	{
 		String [] temp = input.split(":");
 		return temp[1];
+	}
+
+	public int compareTo(Vevent anotherVevent)
+	{
+		int yearComp = Integer.parseInt(DTSTART.substring(0, 4)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(0, 4));
+		if (yearComp != 0)
+		{
+			return yearComp;
+		}
+
+		int monthComp = Integer.parseInt(DTSTART.substring(4, 6)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(4, 6));
+		if (monthComp != 0)
+		{
+			return monthComp;
+		}
+
+		int dayComp = Integer.parseInt(DTSTART.substring(6, 8)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(6, 8));
+		if (dayComp != 0)
+		{
+			return dayComp;
+		}
+
+		int hoursComp = Integer.parseInt(DTSTART.substring(9, 11)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(9, 11));
+		if (hoursComp != 0)
+		{
+			return hoursComp;
+		}
+
+		int minsComp = Integer.parseInt(DTSTART.substring(11, 13)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(11, 13));
+		if (minsComp != 0)
+		{
+			return minsComp;
+		}
+
+		int secsComp = Integer.parseInt(DTSTART.substring(13, 15)) 
+						- Integer.parseInt(anotherVevent.getDTSTART().substring(13, 15));
+		if (secsComp != 0)
+		{
+			return secsComp;
+		}
+
+		return 0;
 	}
 }
