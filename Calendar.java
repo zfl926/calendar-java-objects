@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
 
 public class Calendar
 {
@@ -198,6 +199,7 @@ public class Calendar
 
 	public void printAllEvents()
 	{
+		sortCalendar();
 		Iterator veventsItr = allVevents.iterator();
 		System.out.print("-----------------------------------\n");
 		while(veventsItr.hasNext())
@@ -230,7 +232,7 @@ public class Calendar
 	//sorts the events in the calendar by the start date
 	public void sortCalendar()
 	{
-		//sort that ish here :D
+		Collections.sort(allVevents);
 	}
 
 	//TODO
