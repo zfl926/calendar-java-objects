@@ -77,7 +77,18 @@ public class Vevent
 		DTSTART   = getRandomDate();
 		DTEND     = getRandomDate();
 
+		while(dateIsGreaterThanDate(DTSTAMP, DTSTART))
+		{
+			DTSTART = getRandomDate();
+		}
+
+		while(dateIsGreaterThanDate(DTSTART, DTEND))
+		{
+			DTEND = getRandomDate();
+		}
+
 		//DEBUG OUTPUT
+		/*
 		System.out.println("UID:       " + UID);
 		System.out.println("SUMMARY:   " + SUMMARY);
 		System.out.println("ORGANIZER: " + ORGANIZER);
@@ -86,28 +97,26 @@ public class Vevent
 		System.out.println("DTSTAMP:   " + DTSTAMP);
 		System.out.println("DTSTART:   " + DTSTART);
 		System.out.println("DTEND      " + DTEND);
+		*/
 	}
 
 	private String getRandomDate()
 	{
 		DecimalFormat dm = new DecimalFormat("##");
-
 		String result = "";
-
 		int minYear = 1990;
 		int maxYear = 2030;
 		int maxMonth = 12;
-		int maxDay = 30;
-		int maxHour = 60;
-
+		int maxDay = 31;
+		int maxHour = 24;
+		int max =    60;
 		int min = 1;
-
 		int yearChoice = minYear + (int)(Math.random() * (maxYear - minYear));
 		int monthChoice= min + (int)(Math.random() * (maxMonth - min));
 		int dayChoice  = min + (int)(Math.random() * (maxDay - min));
 		int hourChoice = min + (int)(Math.random() * (maxHour - min));
-		int minChoice  = min + (int)(Math.random() * (maxHour - min));
-		int secChoice  = min + (int)(Math.random() * (maxHour - min));
+		int minChoice  = min + (int)(Math.random() * (max - min));
+		int secChoice  = min + (int)(Math.random() * (max - min));
 
 		result += yearChoice + ""
 			+ String.format("%02d", monthChoice) + ""
@@ -126,6 +135,7 @@ public class Vevent
 	{
 		if(!validDateFormat(a) || !validDateFormat(b))
 		{
+			System.err.println("not a valid date format");
 			return false;
 		}
 
@@ -372,12 +382,43 @@ public class Vevent
 		char expectZ = input.charAt(15);
 		expectZ = Character.toLowerCase(expectZ);
 
-		if (expectYear < 0 || expectMonth < 1 || expectMonth > 12 ||
-			expectDay < 1 || expectDay > 31 || expectT != 't' ||
-			expectHours < 0 || expectHours > 24 || expectMinutes < 0 ||
-			expectMinutes > 59 || expectSeconds < 0 || expectSeconds > 59 ||
-			expectZ != 'z') {
+		if (expectYear < 0)
+		{
+			return false;
+		}
 
+		if (expectMonth < 1 || expectMonth > 12)
+		{
+			return false;
+		}
+
+		if (expectDay < 1 || expectDay > 31)
+		{
+			return false;
+		}
+
+		if(expectT != 't')
+		{
+			return false;
+		}
+
+		if (expectHours < 1 || expectHours > 24)
+		{
+			return false;
+		}
+
+		if (expectMinutes < 0 || expectMinutes > 59)
+		{
+			return false;
+		}
+
+		if (expectSeconds < 0 || expectSeconds > 59)
+		{
+			return false;
+		}
+
+	    if (expectZ != 'z')
+		{
 			return false;
 		}
 
