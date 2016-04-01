@@ -228,7 +228,6 @@ public class Calendar
 		}
 	}
 
-	//TODO
 	//sorts the events in the calendar by the start date
 	public void sortCalendar()
 	{

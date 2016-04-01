@@ -24,6 +24,7 @@ public class Vevent implements Comparable<Vevent>
 	private String SUMMARY;
 	private Geo    GEO;
 	private String CLASS;
+	private String COMMENT;
 
 	//default constructor
 	public Vevent()
@@ -191,6 +192,23 @@ public class Vevent implements Comparable<Vevent>
 
 		System.err.println(a + " is the same as " + b);
 		return false;
+	}
+
+	public String getCOMMENT()
+	{
+		return COMMENT;
+	}
+
+	public void setCOMMENT(String input)
+	{
+		if(validCOMMENT(input))
+		{
+			COMMENT = input;
+		}
+		else
+		{
+			System.err.println("Cannot set COMMENT to \"" + input +"\"because COMMENT is not valid");
+		}
 	}
 
 	public String getUID()
