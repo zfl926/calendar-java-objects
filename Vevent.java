@@ -642,6 +642,14 @@ public class Vevent implements Comparable<Vevent>
 			result += "\n";
 		}
 
+
+		if (COMMENT != null && !COMMENT.equals(""))
+		{
+			result += "COMMENT:";
+			result += COMMENT;
+			result += "\n";
+		}
+
 		result += "END:VEVENT\n";
 
 		return result;
