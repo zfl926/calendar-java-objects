@@ -302,7 +302,7 @@ public class Calendar
 		}
 	}
 
-	//calculates the great circle distance between two Geo locations in statute miles
+	//calculates the great circle distance between two Geo locations in statue miles
 	public double greatCircleDistanceBetween(Geo src, Geo dest)
 	{
 		double earthRadius = 3958.75; // miles (or 6371.0 kilometers)
@@ -317,5 +317,4 @@ public class Calendar
 
 		return dist;
 	}
-
 }
