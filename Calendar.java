@@ -277,17 +277,26 @@ public class Calendar
 		Iterator<Vevent> veventsItr = allVevents.iterator();
 		Vevent iter = veventsItr.next();
 		Vevent iterPrev = iter;
+		DecimalFormat df = new DecimalFormat("#,###.##");
+
 		System.out.print("-----------------------------------\n");
 		System.out.print("------GREAT-CIRCLE-DISTANCE--------\n\n");
 		while(veventsItr.hasNext())
 		{
 			Geo currGEO = iter.getGEO();
 			String currSum = iter.getSUMMARY();
-			DecimalFormat df = new DecimalFormat("#,###.##");
+
+			//move the first iterator forward
 			iter = veventsItr.next();
+
+			//calculate GCD and store it in comment section of first event
 			double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
-			iterPrev.setCOMMENT("Great Circle Distance: " + df.format(gcd));
+			iterPrev.setCOMMENT("Great Circle Distance to the next event is " + df.format(gcd))+ "m (" + df.format(1.609344 * gcd) + "km");
+
+			//move second iterator forward
 			iterPrev = iter;
+
+			//print gcd for first event to the next event
 			System.out.println(currSum + " and " + iter.getSUMMARY() + ":\n" + df.format(gcd) + "m (" + df.format(1.609344 * gcd) + "km)\n");
 			System.out.println("-----------------------------------\n");
 		}
