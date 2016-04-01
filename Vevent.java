@@ -347,6 +347,18 @@ public class Vevent implements Comparable<Vevent>
 		}
 	}
 
+	public boolean validCOMMENT(String input)
+	{
+		if(input.length() > 100)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	public boolean validUID(String input)
 	{
         if (input.equals("invalid") || input.length() > 70)
