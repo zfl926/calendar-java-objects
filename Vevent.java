@@ -77,12 +77,15 @@ public class Vevent implements Comparable<Vevent>
 		DTSTAMP   = getRandomDate();
 		DTSTART   = getRandomDate();
 		DTEND     = getRandomDate();
+		COMMENT   = myRS1.nextString();
 
+		//ensure that the stamp is lesser than the start date of the event
 		while(dateIsGreaterThanDate(DTSTAMP, DTSTART))
 		{
 			DTSTART = getRandomDate();
 		}
 
+		//ensure that the date end is lesser than the date start
 		while(dateIsGreaterThanDate(DTSTART, DTEND))
 		{
 			DTEND = getRandomDate();
@@ -98,6 +101,7 @@ public class Vevent implements Comparable<Vevent>
 		System.out.println("DTSTAMP:   " + DTSTAMP);
 		System.out.println("DTSTART:   " + DTSTART);
 		System.out.println("DTEND      " + DTEND);
+		System.out.println("COMMENT    " + COMMENT);
 		*/
 	}
 
