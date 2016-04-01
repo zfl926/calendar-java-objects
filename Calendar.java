@@ -176,6 +176,21 @@ public class Calendar
 						System.err.println("Invalid CLASS found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
+				//if COMMENT detected
+				else if((temp = strLine.substring(0, 8)).equals("COMMENT:"))
+				{
+					String temp2 = strLine.substring(8, strLine.length());
+
+					//if valid according to validation method in vevent
+					if(vevent.validCOMMENT(temp2))
+					{
+						vevent.setCOMMENT(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid COMMENT found at line " + lineCount + " in " + inputIcsFile);
+					}
+				}
 			}
 			in.close();
 		}
