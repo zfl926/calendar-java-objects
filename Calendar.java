@@ -161,6 +161,21 @@ public class Calendar
 						System.err.println("Invalid GEO found at line " + lineCount + " in " + inputIcsFile);
 					}
 				}
+				//if CLASS detected
+				else if((temp = strLine.substring(0, 6)).equals("CLASS:"))
+				{
+					String temp2 = strLine.substring(6, strLine.length());
+
+					//if valid according to validation method in vevent
+					if(vevent.validCLASS(temp2))
+					{
+						vevent.setCLASS(temp2);
+					}
+					else
+					{
+						System.err.println("Invalid CLASS found at line " + lineCount + " in " + inputIcsFile);
+					}
+				}
 			}
 			in.close();
 		}
