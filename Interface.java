@@ -99,8 +99,6 @@ public class Interface
 		}
 	}
 
-	//TODO
-	//needs to be more user friendly, but it works
 	private static Vevent addEventInterface()
 	{
 		Vevent  vevent = new Vevent();
