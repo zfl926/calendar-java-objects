@@ -99,7 +99,7 @@ public class Interface
 		}
 	}
 
-	private static Vevent addEventInterface()
+	Private static Vevent addEventInterface()
 	{
 		Vevent  vevent = new Vevent();
 		Scanner userInputScanner = new Scanner(System.in);
