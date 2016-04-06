@@ -281,25 +281,53 @@ public class Calendar
 
 		System.out.print("-----------------------------------\n");
 		System.out.print("------GREAT-CIRCLE-DISTANCE--------\n\n");
+
+        Geo currGEO = iter.getGEO();
+		String currSum = iter.getSUMMARY();
+
 		while(veventsItr.hasNext())
 		{
-			Geo currGEO = iter.getGEO();
-			String currSum = iter.getSUMMARY();
-
 			//move the first iterator forward
 			iter = veventsItr.next();
 
-			//calculate GCD and store it in comment section of first event
-			double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
-			iterPrev.setCOMMENT("Great Circle Distance to the next event is " + df.format(gcd))+ "m (" + df.format(1.609344 * gcd) + "km");
+			//if the geo of the current iteration is not empty
+			if(iter.getGEO() != null)
+			{
+				//calculate GCD and store it in comment section of first event
+				double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
+				iterPrev.setCOMMENT("The Great Circle Distance to the next event(" + shortenString(iter.getSUMMARY()) + "...) is " + df.format(gcd)+ " miles (" + df.format(1.609344 * gcd) + "km)");
 
-			//move second iterator forward
-			iterPrev = iter;
+				//print gcd for first event to the next event
+				System.out.println(currSum + " to " + iter.getSUMMARY() + " is " + df.format(gcd) + " miles (" + df.format(1.609344 * gcd) + "km)\n");
 
-			//print gcd for first event to the next event
-			System.out.println(currSum + " and " + iter.getSUMMARY() + ":\n" + df.format(gcd) + "m (" + df.format(1.609344 * gcd) + "km)\n");
+		    	//updates the held values
+				currGEO = iter.getGEO();
+				currSum = iter.getSUMMARY();
+				iterPrev = iter;
+			}
+			else
+			{
+				System.out.println(iter.getSUMMARY() + " does not have a GEO, GCD will not take this event into consideration....");
+			}
 			System.out.println("-----------------------------------\n");
 		}
+	}
+
+	//returns the first x characters of a string if the string is considered to be too long
+	private String shortenString(String input)
+	{
+		String result = "";
+		int RETURNLENGTH = 7;
+		if (input.length() <= RETURNLENGTH)
+		{
+			return input;
+		}
+
+		for (int i = 0; i < RETURNLENGTH; i++)
+		{
+			result += input.charAt(i);
+		}
+		return result;
 	}
 
 	//calculates the great circle distance between two Geo locations in statue miles
