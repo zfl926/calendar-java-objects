@@ -711,4 +711,39 @@ public class Vevent implements Comparable<Vevent>
 
 		return 0;
 	}
+
+	//modified from http://stackoverflow.com/questions/41107/how-to-generate-a-random-alpha-numeric-string
+	public class RandomString {
+
+	    char[] symbols;
+        StringBuilder tmp;
+		Random random = new Random();
+	    char[] buf;
+
+	    public RandomString(int length) {
+	        if (length < 1)
+	        throw new IllegalArgumentException("length < 1: " + length);
+
+			tmp = new StringBuilder();
+
+			for (char ch = '0'; ch <= '9'; ++ch)
+			{
+				tmp.append(ch);
+			}
+
+			for (char ch = 'a'; ch <= 'z'; ++ch)
+			{
+				tmp.append(ch);
+			}
+
+			symbols = tmp.toString().toCharArray();
+	        buf = new char[length];
+	    }
+
+	    public String nextString() {
+	        for (int idx = 0; idx < buf.length; ++idx)
+	        buf[idx] = symbols[random.nextInt(symbols.length)];
+	        return new String(buf);
+	    }
+	}
 }
