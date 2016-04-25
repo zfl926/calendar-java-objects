@@ -13,6 +13,7 @@ hs_err_pid*
 
 #Calendar Files
 *.ics
+*.backup
 
 # Mac users
 .DS_Store
