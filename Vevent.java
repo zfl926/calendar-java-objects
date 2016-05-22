@@ -65,19 +65,19 @@ public class Vevent implements Comparable<Vevent>
 		double latChoice    = -90.0        + (Math.random()      * 90.0      );
 		double lonChoice    = -180.0       + (Math.random()      * 180.0     );
 
-		RandomString myRS1 = new RandomString(sizeOfUid);
-		RandomString myRS2 = new RandomString(sizeOfSummary);
-		RandomString myRS3 = new RandomString(sizeOfOrganizer);
+		String myRS1 = randomString(sizeOfUid);
+		String myRS2 = randomString(sizeOfSummary);
+		String myRS3 = randomString(sizeOfOrganizer);
 
-		UID       = myRS1.nextString();
-		SUMMARY   = myRS2.nextString();
-		ORGANIZER = myRS3.nextString();
+		UID       = myRS1;
+		SUMMARY   = myRS2;
+		ORGANIZER = myRS3;
 		CLASS     = classOptions[classChoice];
 		GEO       = new Geo(df.format(latChoice) + ";" + df.format(lonChoice));
 		DTSTAMP   = getRandomDate();
 		DTSTART   = getRandomDate();
 		DTEND     = getRandomDate();
-		COMMENT   = myRS1.nextString();
+		COMMENT   = myRS1;
 
 		//ensure that the stamp is lesser than the start date of the event
 		while(dateIsGreaterThanDate(DTSTAMP, DTSTART))
@@ -133,8 +133,37 @@ public class Vevent implements Comparable<Vevent>
 			+ "Z";
 
 		return result;
-
 	}
+
+    public String randomString(int length)
+    {
+        //input validation
+        if (length < 1)
+        {
+            throw new IllegalArgumentException("length < 1" + length);
+        }
+
+        //declaration
+        Random random = new Random();
+        char [] buf = new char[length];
+        char [] symbols;
+
+        //build symbols array
+        StringBuilder tmp = new StringBuilder();
+        for (char ch = '0'; ch <= '9'; ++ch)
+        tmp.append(ch);
+        for (char ch = 'a'; ch <= 'z'; ++ch)
+        tmp.append(ch);
+        symbols = tmp.toString().toCharArray();
+
+        //return value
+        for (int idx = 0; idx < buf.length; ++idx)
+        {
+            buf[idx] = symbols[random.nextInt(symbols.length)];
+        }
+
+        return new String(buf);
+    }
 
 	private boolean dateIsGreaterThanDate(String a, String b)
 	{
