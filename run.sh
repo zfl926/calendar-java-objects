@@ -1,4 +1,4 @@
 #!/bin/sh
-javac Calendar.java Interface.java Vevent.java Coordinate.java Geo.java
+javac Calendar.java Interface.java Vevent.java Geo.java
 #java Interface
-rm *.class
+#rm *.class
