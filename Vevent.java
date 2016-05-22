@@ -90,19 +90,6 @@ public class Vevent implements Comparable<Vevent>
 		{
 			DTEND = getRandomDate();
 		}
-
-		//DEBUG OUTPUT
-		/*
-		System.out.println("UID:       " + UID);
-		System.out.println("SUMMARY:   " + SUMMARY);
-		System.out.println("ORGANIZER: " + ORGANIZER);
-		System.out.println("CLASS:     " + CLASS);
-		System.out.println("GEO:       " + GEO.toString());
-		System.out.println("DTSTAMP:   " + DTSTAMP);
-		System.out.println("DTSTART:   " + DTSTART);
-		System.out.println("DTEND      " + DTEND);
-		System.out.println("COMMENT    " + COMMENT);
-		*/
 	}
 
 	private String getRandomDate()
@@ -430,7 +417,8 @@ public class Vevent implements Comparable<Vevent>
 
 	private boolean validDateFormat(String input)
 	{
-		if (input.length() != 16) {
+		if (input.length() != 16)
+		{
 			System.err.println("Date: " + input + " is " + input.length() + " char, should be 16.");
 			return false;
 		}
@@ -533,7 +521,7 @@ public class Vevent implements Comparable<Vevent>
 		}
 		catch(Exception e)
 		{
-
+			System.err.println(e.toString());
 		}
 		return myReturn;
 	}
