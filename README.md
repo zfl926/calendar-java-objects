@@ -1,5 +1,3 @@
-# Calendar Event Generator
-
 Java objects that handle .ics files (calendar exports)
 
 ## Calendars
@@ -19,7 +17,7 @@ calendar.importIcs("/home/alice/alices-calendar.ics");
 calendar.sortCalendar();
 
 //prints the results of the great circle distance of the calendar
-//also stores results in the COMMENT field of the respective Vevent
+//stores results in the COMMENT field of the respective Vevent
 calendar.printGreatCircleDistance();
 
 //exports the calendar including whatever changes were made to it
@@ -53,7 +51,7 @@ calendar.addEvent(customEvent);
 
 ```
 
-## Interface Usage
+## Interface
 
 ---
 
@@ -65,7 +63,7 @@ java Interface my-summer-calendar.ics
 
 ```
 
-To sample the application and create a new .ics file:
+To create a new .ics file:
 
 ```bash
 
