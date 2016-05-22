@@ -73,6 +73,9 @@ java Interface
 
 ```
 
+## Dependencies
+Vevent.java <-- Calendar.java <-- Interface.java
+
 ## Contributing
 Currently accepting pull requests for any additions
 
