@@ -282,7 +282,8 @@ public class Calendar
 		System.out.print("-----------------------------------\n");
 		System.out.print("------GREAT-CIRCLE-DISTANCE--------\n\n");
 
-        Geo currGEO = iter.getGEO();
+		Float curLat = iter.getLat();
+		Float curLon = iter.getLon();
 		String currSum = iter.getSUMMARY();
 
 		while(veventsItr.hasNext())
@@ -293,15 +294,19 @@ public class Calendar
 			//if the geo of the current iteration is not empty
 			if(iter.getGEO() != null)
 			{
+				float nextLat = iter.getLat();
+				float nextLon = iter.getLon();
+
 				//calculate GCD and store it in comment section of first event
-				double gcd = greatCircleDistanceBetween(currGEO, iter.getGEO());
+				double gcd = greatCircleDistanceBetween(curLat, curLon, nextLat, nextLon);
 				iterPrev.setCOMMENT("The Great Circle Distance to the next event(" + shortenString(iter.getSUMMARY()) + "...) is " + df.format(gcd)+ " miles (" + df.format(1.609344 * gcd) + "km)");
 
 				//print gcd for first event to the next event
 				System.out.println(currSum + " to " + iter.getSUMMARY() + " is " + df.format(gcd) + " miles (" + df.format(1.609344 * gcd) + "km)\n");
 
-		    	//updates the held values
-				currGEO = iter.getGEO();
+		    	//updates values
+				curLat = iter.getLat();
+				curLon = iter.getLon();
 				currSum = iter.getSUMMARY();
 				iterPrev = iter;
 			}
@@ -330,16 +335,15 @@ public class Calendar
 		return result;
 	}
 
-	//calculates the great circle distance between two Geo locations in statue miles
-	public double greatCircleDistanceBetween(Geo src, Geo dest)
+	//calculates the great circle distance between two locations in statue miles
+	public double greatCircleDistanceBetween(float srcLat, float srcLon, float dstLat, float dstLon)
 	{
 		double earthRadius = 3958.75; // miles (or 6371.0 kilometers)
-		double dLat = Math.toRadians(dest.getLatitude() - src.getLatitude());
-	    double dLng = Math.toRadians(dest.getLongitude() - src.getLongitude());
+		double dLat = Math.toRadians(dstLat- srcLat);
+		double dLng = Math.toRadians(dstLon - srcLon);
 		double sin_dLat = Math.sin(dLat / 2);
 		double sin_dLng = Math.sin(dLng / 2);
-		double a = Math.pow(sin_dLat, 2) + Math.pow(sin_dLng, 2)
-            * Math.cos(Math.toRadians(src.getLatitude())) * Math.cos(Math.toRadians(dest.getLatitude()));
+		double a = Math.pow(sin_dLat, 2) + Math.pow(sin_dLng, 2) * Math.cos(Math.toRadians(srcLat)) * Math.cos(Math.toRadians(dstLat));
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 		double dist = earthRadius * c;
 
